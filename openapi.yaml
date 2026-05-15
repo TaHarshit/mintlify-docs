@@ -1,0 +1,57 @@
+openapi: 3.0.0
+info:
+  title: FSS Measurement API
+  description: FSS Measurement API v1 for managing window measurements, clients, rooms, and subscriptions.
+  version: 1.0.0
+servers:
+  - url: https://fssportal.com/api/v1
+    description: Production server
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Token
+security:
+  - ApiKeyAuth: []
+paths:
+  /user/get_profile:
+    post:
+      summary: Get Profile
+      description: Retrieve user profile information
+      tags:
+        - User Management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+      responses:
+        '200':
+          description: Successful response
+  /client/add:
+    post:
+      summary: Add Client
+      description: Add a new client
+      tags:
+        - Client Management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                address:
+                  type: string
+      responses:
+        '200':
+          description: Successful response

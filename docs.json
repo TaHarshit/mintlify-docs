@@ -7,6 +7,17 @@
     "light": "#65C18C",
     "dark": "#074A30"
   },
+  "api": {
+    "baseUrl": "https://fssportal.com/api/v1",
+    "openapi": "openapi.yaml",
+    "auth": {
+      "method": "key",
+      "name": "X-API-Token"
+    },
+    "playground": {
+      "display": "interactive"
+    }
+  },
   "navigation": {
     "tabs": [
       {
@@ -23,6 +34,13 @@
       {
         "tab": "API Reference",
         "groups": [
+          {
+            "group": "API Documentation",
+            "pages": [
+              "api-reference/overview",
+              "api-reference/errors"
+            ]
+          },
           {
             "group": "User Management",
             "pages": [
@@ -94,5 +112,27 @@
       "label": "Get API Token",
       "href": "https://fssportal.com/admin/api-tokens"
     }
+  },
+  "anchors": [
+    {
+      "name": "Documentation",
+      "icon": "book-open-cover",
+      "url": "https://docs.fss-measurement.com"
+    },
+    {
+      "name": "Community",
+      "icon": "slack",
+      "url": "https://community.fss-measurement.com"
+    },
+    {
+      "name": "Blog",
+      "icon": "newspaper",
+      "url": "https://blog.fss-measurement.com"
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/fss_measurement",
+    "github": "https://github.com/fss-measurement",
+    "linkedin": "https://www.linkedin.com/company/fss-measurement"
   }
 }
