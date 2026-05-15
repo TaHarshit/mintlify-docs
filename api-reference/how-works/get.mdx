@@ -16,12 +16,21 @@ POST /api/v1/how-works/get
 
 <Note>This endpoint does not require authentication</Note>
 
+
+
 ## Headers
 
-| Header | Value | Required |
-|--------|-------|----------|
-| Content-Type | application/json | Yes |
+<ParamField header="X-API-Token" type="string" required>
+  Your API access token. You can also set this globally in the API playground.
+</ParamField>
 
+<ParamField header="platform" type="string" required>
+  The platform making the request: `WEB`, `IOS`, or `ANDROID`.
+</ParamField>
+
+<ParamField header="Authorization" type="string" required placeholder="Bearer {token}">
+  User authentication token (Bearer token received after signin).
+</ParamField>
 ## Request Body
 
 ```json

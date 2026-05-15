@@ -1,8 +1,8 @@
 {
   "name": "FSS Measurement API",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo.png",
+    "light": "/logo.png"
   },
   "favicon": "/favicon.svg",
   "colors": {

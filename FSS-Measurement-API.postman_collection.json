@@ -1,0 +1,1251 @@
+{
+  "info": {
+    "name": "FSS Measurement API",
+    "description": "FSS Measurement API v1 Collection for testing endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost/fss/public/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "apiToken",
+      "value": "YOUR_API_TOKEN",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{apiToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "User Management",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/get_profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "get_profile"]
+            },
+            "description": "Retrieve user profile information"
+          }
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"phone\": \"1234567890\",\n  \"email\": \"john@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/update_profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "update_profile"]
+            },
+            "description": "Update user profile information"
+          }
+        },
+        {
+          "name": "Update Device Number",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"device_number\": \"DEVICE123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/update_devicenumber",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "update_devicenumber"]
+            },
+            "description": "Update user device number"
+          }
+        },
+        {
+          "name": "Feedback",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"feedback\": \"Great app!\",\n  \"rating\": 5\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/feedback",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "feedback"]
+            },
+            "description": "Submit user feedback"
+          }
+        },
+        {
+          "name": "Profile Settings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/profile_settings",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "profile_settings"]
+            },
+            "description": "Get user profile settings"
+          }
+        },
+        {
+          "name": "Search Company",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"search\": \"Doe\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/search_company",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "search_company"]
+            },
+            "description": "Search for companies"
+          }
+        },
+        {
+          "name": "Get Company User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/get_company_user",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "get_company_user"]
+            },
+            "description": "Get company users"
+          }
+        },
+        {
+          "name": "Change Fields Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"field_order\": {\n    \"2\": [\"w_top\", \"w_middle\", \"w_bottom\"]\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/change_fields_order",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "change_fields_order"]
+            },
+            "description": "Change custom field display order"
+          }
+        },
+        {
+          "name": "Get Fields Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/get_fields_order",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "get_fields_order"]
+            },
+            "description": "Get custom field display order"
+          }
+        },
+        {
+          "name": "Delete Account",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/delete_account",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "delete_account"]
+            },
+            "description": "Delete user account"
+          }
+        },
+        {
+          "name": "Enable Focus",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"focus_enabled\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/enable_focus",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "enable_focus"]
+            },
+            "description": "Enable/disable Solatech focus"
+          }
+        },
+        {
+          "name": "Invite User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"newuser@example.com\",\n  \"role\": \"user\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/invite_user",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "invite_user"]
+            },
+            "description": "Invite a new user to company"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Client Management",
+      "item": [
+        {
+          "name": "Add Client",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"1234567890\",\n  \"address\": \"123 Main St\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/client/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["client", "add"]
+            },
+            "description": "Add a new client"
+          }
+        },
+        {
+          "name": "Update Client",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": 1,\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/client/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["client", "update"]
+            },
+            "description": "Update client information"
+          }
+        },
+        {
+          "name": "Delete Client",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/client/delete",
+              "host": ["{{baseUrl}}"],
+              "path": ["client", "delete"]
+            },
+            "description": "Delete a client"
+          }
+        },
+        {
+          "name": "Search Clients",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"search\": \"John\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/client/search",
+              "host": ["{{baseUrl}}"],
+              "path": ["client", "search"]
+            },
+            "description": "Search for clients"
+          }
+        },
+        {
+          "name": "List Clients",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 1,\n  \"limit\": 10\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/client/list",
+              "host": ["{{baseUrl}}"],
+              "path": ["client", "list"]
+            },
+            "description": "List all clients with pagination"
+          }
+        },
+        {
+          "name": "User Clients",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/client/user_client",
+              "host": ["{{baseUrl}}"],
+              "path": ["client", "user_client"]
+            },
+            "description": "Get clients for authenticated user"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Room Management",
+      "item": [
+        {
+          "name": "Get Measurement Types",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/room/measurement_type",
+              "host": ["{{baseUrl}}"],
+              "path": ["room", "measurement_type"]
+            },
+            "description": "Get available measurement types"
+          }
+        },
+        {
+          "name": "Add Room",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": 1,\n  \"name\": \"Living Room\",\n  \"length\": 15,\n  \"width\": 12\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/room/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["room", "add"]
+            },
+            "description": "Add a new room"
+          }
+        },
+        {
+          "name": "Update Room",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"room_id\": 1,\n  \"name\": \"Living Room\",\n  \"length\": 15,\n  \"width\": 12\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/room/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["room", "update"]
+            },
+            "description": "Update room information"
+          }
+        },
+        {
+          "name": "Delete Room",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"room_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/room/delete",
+              "host": ["{{baseUrl}}"],
+              "path": ["room", "delete"]
+            },
+            "description": "Delete a room"
+          }
+        },
+        {
+          "name": "Get Room Categories",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/room/get-category",
+              "host": ["{{baseUrl}}"],
+              "path": ["room", "get-category"]
+            },
+            "description": "Get room categories"
+          }
+        },
+        {
+          "name": "Get Room",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"room_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/room/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["room", "get"]
+            },
+            "description": "Get room details"
+          }
+        },
+        {
+          "name": "Get Rooms by Client ID",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/room/get-by-client-id",
+              "host": ["{{baseUrl}}"],
+              "path": ["room", "get-by-client-id"]
+            },
+            "description": "Get all rooms for a client"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin Rooms",
+      "item": [
+        {
+          "name": "Get Admin Rooms",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/adminroom/index",
+              "host": ["{{baseUrl}}"],
+              "path": ["adminroom", "index"]
+            },
+            "description": "Get all admin-defined room types"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Measurements",
+      "item": [
+        {
+          "name": "Single Window Photo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": 1,\n  \"room_id\": 1,\n  \"photo\": \"base64_image_data\",\n  \"width\": 36,\n  \"height\": 48,\n  \"depth\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/measurements/single_window_photo_add_edit",
+              "host": ["{{baseUrl}}"],
+              "path": ["measurements", "single_window_photo_add_edit"]
+            },
+            "description": "Add/edit single window measurement with photo"
+          }
+        },
+        {
+          "name": "Single Window",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": 1,\n  \"room_id\": 1,\n  \"window_type\": \"single\",\n  \"width\": 36,\n  \"height\": 48,\n  \"depth\": 2,\n  \"notes\": \"Living room window\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/measurements/single_window_add_edit",
+              "host": ["{{baseUrl}}"],
+              "path": ["measurements", "single_window_add_edit"]
+            },
+            "description": "Add/edit single window measurement"
+          }
+        },
+        {
+          "name": "Multiple Window",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": 1,\n  \"room_id\": 1,\n  \"windows\": [\n    {\"width\": 36, \"height\": 48, \"quantity\": 2},\n    {\"width\": 24, \"height\": 36, \"quantity\": 3}\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/measurements/multiple_window_add_edit",
+              "host": ["{{baseUrl}}"],
+              "path": ["measurements", "multiple_window_add_edit"]
+            },
+            "description": "Add/edit multiple window measurements"
+          }
+        },
+        {
+          "name": "Specialty Window",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": 1,\n  \"room_id\": 1,\n  \"window_type\": \"arched\",\n  \"width\": 48,\n  \"height\": 60,\n  \"arch_height\": 12,\n  \"notes\": \"Arched window in living room\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/measurements/specialty_window_add_edit",
+              "host": ["{{baseUrl}}"],
+              "path": ["measurements", "specialty_window_add_edit"]
+            },
+            "description": "Add/edit specialty window measurements"
+          }
+        },
+        {
+          "name": "Series Window with Draperies",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": 1,\n  \"room_id\": 1,\n  \"windows\": [\n    {\"width\": 36, \"height\": 48, \"drapery_style\": \"pleated\", \"fabric_type\": \"velvet\"}\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/measurements/series_window_with_draperies_add_edit",
+              "host": ["{{baseUrl}}"],
+              "path": ["measurements", "series_window_with_draperies_add_edit"]
+            },
+            "description": "Add/edit window measurements with drapery specifications"
+          }
+        },
+        {
+          "name": "Awning Measurement",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": 1,\n  \"awning_type\": \"retractable\",\n  \"width\": 120,\n  \"projection\": 60,\n  \"mount_height\": 96\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/measurements/awning_measurement_add_edit",
+              "host": ["{{baseUrl}}"],
+              "path": ["measurements", "awning_measurement_add_edit"]
+            },
+            "description": "Add/edit awning measurements"
+          }
+        },
+        {
+          "name": "Get Measurements",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": 1,\n  \"room_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/measurements/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["measurements", "get"]
+            },
+            "description": "Get measurements for a client"
+          }
+        },
+        {
+          "name": "Delete Measurement",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"measurement_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/measurements/delete",
+              "host": ["{{baseUrl}}"],
+              "path": ["measurements", "delete"]
+            },
+            "description": "Delete a measurement"
+          }
+        },
+        {
+          "name": "Delete Measurement Image",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"image_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/measurements/delete-image",
+              "host": ["{{baseUrl}}"],
+              "path": ["measurements", "delete-image"]
+            },
+            "description": "Delete a measurement photo"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lead Sources",
+      "item": [
+        {
+          "name": "Get Lead Sources",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lead_source/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["lead_source", "get"]
+            },
+            "description": "Get all lead sources"
+          }
+        },
+        {
+          "name": "Add Lead Source",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Social Media\",\n  \"description\": \"Social media inquiry\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lead_source/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["lead_source", "add"]
+            },
+            "description": "Create a new lead source"
+          }
+        },
+        {
+          "name": "Update Lead Source",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lead_source_id\": 1,\n  \"name\": \"Social Media (Updated)\",\n  \"description\": \"Updated description\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lead_source/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["lead_source", "update"]
+            },
+            "description": "Update an existing lead source"
+          }
+        },
+        {
+          "name": "Get User Lead Sources",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lead_source/user_leadsource",
+              "host": ["{{baseUrl}}"],
+              "path": ["lead_source", "user_leadsource"]
+            },
+            "description": "Get lead sources created by the user"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Plans & Subscriptions",
+      "item": [
+        {
+          "name": "Get Plans",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/plans/index",
+              "host": ["{{baseUrl}}"],
+              "path": ["plans", "index"]
+            },
+            "description": "Get available subscription plans"
+          }
+        },
+        {
+          "name": "Init Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plan_id\": 1,\n  \"payment_method\": \"card\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/transactions/init-payment",
+              "host": ["{{baseUrl}}"],
+              "path": ["transactions", "init-payment"]
+            },
+            "description": "Initialize a subscription payment"
+          }
+        },
+        {
+          "name": "Complete Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment_intent_id\": \"pi_123456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/transactions/complete-payment",
+              "host": ["{{baseUrl}}"],
+              "path": ["transactions", "complete-payment"]
+            },
+            "description": "Complete a subscription payment"
+          }
+        },
+        {
+          "name": "Get User Current Plan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/transactions/get_user_current_plan",
+              "host": ["{{baseUrl}}"],
+              "path": ["transactions", "get_user_current_plan"]
+            },
+            "description": "Get the authenticated user's current subscription plan"
+          }
+        },
+        {
+          "name": "Get Web User Current Plan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Token",
+                "value": "{{apiToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/transactions/get_web_user_current_plan",
+              "host": ["{{baseUrl}}"],
+              "path": ["transactions", "get_web_user_current_plan"]
+            },
+            "description": "Get the web user's current subscription plan"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "item": [
+        {
+          "name": "Get Countries",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/countries/index",
+              "host": ["{{baseUrl}}"],
+              "path": ["countries", "index"]
+            },
+            "description": "Get list of available countries"
+          }
+        },
+        {
+          "name": "Get How It Works",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/how-works/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["how-works", "get"]
+            },
+            "description": "Get tutorial/how-it-works content"
+          }
+        }
+      ]
+    }
+  ]
+}

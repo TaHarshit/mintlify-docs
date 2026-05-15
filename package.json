@@ -1,0 +1,20 @@
+{
+  "name": "fss-measurement-docs",
+  "version": "1.0.0",
+  "description": "FSS Measurement API Documentation",
+  "scripts": {
+    "dev": "mintlify dev",
+    "install:mintlify": "npm i -g mintlify",
+    "preview": "mintlify dev"
+  },
+  "keywords": [
+    "api",
+    "documentation",
+    "fss",
+    "measurement",
+    "window",
+    "mintlify"
+  ],
+  "author": "FSS Measurement Team",
+  "license": "MIT"
+}

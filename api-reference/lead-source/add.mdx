@@ -12,10 +12,21 @@ POST /api/v1/lead_source/add
 
 <Note>This endpoint requires authentication</Note>
 
+
+
 ## Headers
 
-Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+<ParamField header="X-API-Token" type="string" required>
+  Your API access token. You can also set this globally in the API playground.
+</ParamField>
 
+<ParamField header="platform" type="string" required>
+  The platform making the request: `WEB`, `IOS`, or `ANDROID`.
+</ParamField>
+
+<ParamField header="Authorization" type="string" required placeholder="Bearer {token}">
+  User authentication token (Bearer token received after signin).
+</ParamField>
 ## Request Body
 
 <ParamField body="company_name" type="string">

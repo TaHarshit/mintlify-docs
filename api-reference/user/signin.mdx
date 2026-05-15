@@ -10,14 +10,17 @@ description: 'Authenticate user and get access token'
 POST /api/v1/user/signin
 ```
 
+
+
 ## Headers
 
-Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
-
-<ParamField header="platform" type="string" required>
-  WEB, IOS, or ANDROID
+<ParamField header="X-API-Token" type="string" required>
+  Your API access token. You can also set this globally in the API playground.
 </ParamField>
 
+<ParamField header="platform" type="string" required>
+  The platform making the request: `WEB`, `IOS`, or `ANDROID`.
+</ParamField>
 ## Request Body
 
 <ParamField body="email" type="string" required>
