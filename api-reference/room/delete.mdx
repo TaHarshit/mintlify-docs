@@ -1,0 +1,68 @@
+---
+title: Delete Room
+api: 'POST /api/v1/room/delete'
+description: Delete a room
+---
+
+## Endpoint
+
+```
+POST /api/v1/room/delete
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="room_id" type="integer" required>
+  The unique identifier of the room to delete.
+</ParamField>
+
+## Response
+
+
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/room/delete' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "room_id": 1
+}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/room/delete', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+  "room_id": 1
+})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+null
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required
+

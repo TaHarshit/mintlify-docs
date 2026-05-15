@@ -1,0 +1,92 @@
+---
+title: Invite User
+api: 'POST /api/v1/user/invite_user'
+description: Invite a user to your company
+---
+
+# Invite User
+
+Invite a new user to join your company.
+
+## Endpoint
+
+```
+POST /api/v1/user/invite_user
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="email" type="string">
+  Email of user to invite
+</ParamField>
+
+<ParamField body="role" type="string">
+  User role (admin, member)
+</ParamField>
+
+## Response
+
+<ResponseField name="status" type="string">
+  Success status
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  Response data
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST http://fssportal.com/api/v1/user/invite_user \
+  -H "X-API-Token: YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "newuser@example.com",
+    "role": "member"
+  }'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/user/invite_user', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    email: 'newuser@example.com',
+    role: 'member'
+  })
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "status": "success",
+  "data": {
+    "message": "User invited successfully",
+    "invite_link": "http://fssportal.com/api/v1/invite/token123"
+  }
+}
+```
+
+```json Error Response
+{
+  "status": "error",
+  "message": "User already exists"
+}
+```
+
+</ResponseExample>

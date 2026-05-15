@@ -1,0 +1,107 @@
+---
+title: Update Profile
+api: 'POST /api/v1/user/update_profile'
+description: Update user profile information
+---
+
+# Update Profile
+
+Update your user profile information.
+
+## Endpoint
+
+```
+POST /api/v1/user/update_profile
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField name="first_name" type="string" required={false}>
+  First name
+</ParamField>
+
+<ParamField name="last_name" type="string" required={false}>
+  Last name
+</ParamField>
+
+<ParamField name="phone" type="string" required={false}>
+  Phone number
+</ParamField>
+
+<ParamField name="email" type="string" required={false}>
+  Email address
+</ParamField>
+
+## Response
+
+<ResponseField name="status" type="string">
+  Success status
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  Response data
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST http://localhost/fss/public/api/v1/user/update_profile \
+  -H "X-API-Token: YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "first_name": "John",
+    "last_name": "Doe",
+    "phone": "1234567890"
+  }'
+```
+
+```javascript JavaScript
+const response = await fetch('http://localhost/fss/public/api/v1/user/update_profile', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    first_name: 'John',
+    last_name: 'Doe',
+    phone: '1234567890'
+  })
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "status": "success",
+  "data": {
+    "message": "Profile updated successfully",
+    "user": {
+      "id": 1,
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john@example.com"
+    }
+  }
+}
+```
+
+```json Error Response
+{
+  "status": "error",
+  "message": "Validation failed"
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,208 @@
+---
+title: 'Get Profile'
+api: 'POST /api/v1/user/get_profile'
+description: 'Retrieve user profile information'
+---
+
+## Endpoint
+
+```
+POST /api/v1/user/get_profile
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+No request body required.
+
+## Response
+
+<ResponseField name="message" type="string">
+  message
+</ResponseField>
+<ResponseField name="data" type="object">
+  data
+  <Expandable title="data">
+    <ResponseField name="id" type="integer">
+      id
+    </ResponseField>
+    <ResponseField name="user_type" type="integer">
+      user type
+    </ResponseField>
+    <ResponseField name="company_name" type="string">
+      company name
+    </ResponseField>
+    <ResponseField name="own_company_name" type="string">
+      own company name
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      name
+    </ResponseField>
+    <ResponseField name="country_code" type="string">
+      country code
+    </ResponseField>
+    <ResponseField name="phone_no" type="string">
+      phone no
+    </ResponseField>
+    <ResponseField name="profile_image" type="string">
+      profile image
+    </ResponseField>
+    <ResponseField name="company_logo" type="string">
+      company logo
+    </ResponseField>
+    <ResponseField name="device_number" type="object">
+      device number
+    </ResponseField>
+    <ResponseField name="stripe_customer_id" type="string">
+      stripe customer id
+    </ResponseField>
+    <ResponseField name="stripe_payment_method_id" type="object">
+      stripe payment method id
+    </ResponseField>
+    <ResponseField name="in_app_purchase_receipt_id" type="object">
+      in app purchase receipt id
+    </ResponseField>
+    <ResponseField name="status" type="integer">
+      status
+    </ResponseField>
+    <ResponseField name="email" type="string">
+      email
+    </ResponseField>
+    <ResponseField name="email_verified_at" type="object">
+      email verified at
+    </ResponseField>
+    <ResponseField name="device_token" type="string">
+      device token
+    </ResponseField>
+    <ResponseField name="platform" type="string">
+      platform
+    </ResponseField>
+    <ResponseField name="company_owner" type="integer">
+      company owner
+    </ResponseField>
+    <ResponseField name="api_key" type="string">
+      api key
+    </ResponseField>
+    <ResponseField name="solatech_focus_email" type="string">
+      solatech focus email
+    </ResponseField>
+    <ResponseField name="solatech_focus_on" type="integer">
+      solatech focus on
+    </ResponseField>
+    <ResponseField name="field_display_orders" type="string">
+      field display orders
+    </ResponseField>
+    <ResponseField name="measurement_unit" type="string">
+      measurement unit
+    </ResponseField>
+    <ResponseField name="cash_sub_end_date" type="string">
+      cash sub end date
+    </ResponseField>
+    <ResponseField name="created_at" type="string">
+      created at
+    </ResponseField>
+    <ResponseField name="stripe_id" type="string">
+      stripe id
+    </ResponseField>
+    <ResponseField name="pm_type" type="string">
+      pm type
+    </ResponseField>
+    <ResponseField name="pm_last_four" type="string">
+      pm last four
+    </ResponseField>
+    <ResponseField name="trial_ends_at" type="string">
+      trial ends at
+    </ResponseField>
+    <ResponseField name="last_plan_switch_at" type="string">
+      last plan switch at
+    </ResponseField>
+    <ResponseField name="device_type" type="string">
+      device type
+    </ResponseField>
+    <ResponseField name="post" type="object">
+      post
+    </ResponseField>  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/user/get_profile' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/user/get_profile', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Profile get successfully.",
+  "data": {
+    "id": 68,
+    "user_type": 2,
+    "company_name": "212785350",
+    "own_company_name": "Tech Company",
+    "name": "Krunal Nagvadia",
+    "country_code": "+1",
+    "phone_no": "8460008773",
+    "profile_image": "/storage/profile_image/placeholder.jpg",
+    "company_logo": "1775903654_69da23a601a39.png",
+    "device_number": null,
+    "stripe_customer_id": "cus_OqynCAyX9V0zUv",
+    "stripe_payment_method_id": null,
+    "in_app_purchase_receipt_id": null,
+    "status": 1,
+    "email": "krunalc4@gmail.com",
+    "email_verified_at": null,
+    "device_token": "0F790F62-FE71-4DC3-87FC-0412B1E165FE",
+    "platform": "IOS",
+    "company_owner": 1,
+    "api_key": "Qg6pyy8A2XgdwDkWNrnQkWdsBL0DIBOhZmHDqfGH8gUcwYG2ggiEbpjD4rITWbFj76EHApFqOaCgqU//UHuKl7YVnxnazIW+NUDgoowwXunAP5Rrmg0JeDDYyJAlrO8QWqjsh3qpIOzo5+0ma6aDKLI1UQnFRb3hTjAEM4lduzEBoMRINQDbza1PS2ZCkvw2MUgGNn1XjPSUS2gG0Ga/ZHBAfWpudessgTzooDeOdudMOzNh9v/MQc4W2NnMIPJ2hisdn9Y8gTILfpCNmFdmjoT3jLm3skha+EhEbqurZbw=",
+    "solatech_focus_email": "fss-user@solatech-darious.com",
+    "solatech_focus_on": 1,
+    "field_display_orders": "{\"2\":[\"w_top\",\"w_middle\",\"w_bottom\",\"h_left\",\"h_middle\",\"h_right\",\"d_sill\",\"left_edge_w\",\"right_edge_w\",\"top_edge_to_ceiling_h\",\"bottom_edge_to_floor_h\",\"floor_to_ceiling_h\",\"bottom_trim_to_floor\",\"Test\",\"Ii\"],\"3\":[\"w_top\",\"w_middle\",\"w_bottom\",\"h_left\",\"h_middle\",\"h_right\",\"d_sill\",\"left_edge_w\",\"right_edge_w\",\"top_edge_to_ceiling_h\",\"bottom_edge_to_floor_h\",\"floor_to_ceiling_h\",\"bottom_trim_to_floor\"],\"5\":[\"floor_to_ceiling\",[\"window_a_w_top\",\"window_a_w_middle\",\"window_a_w_bottom\",\"window_a_h_left\",\"window_a_h_middle\",\"window_a_h_right\",\"window_a_sill_depth\",\"floor_to_ceiling\",\"floor_to_trim\",\"floor_to_sill\",\"wall_to_wall\",\"left_wall_to_window\",\"left_wall_to_trim\",\"trim_width\",\"right_wall_to_window\",\"right_wall_to_trim\",\"curtain_rod_length\",\"top_trim_to_obstruction\",\"top_trim_to_curtain_rod\",\"top_trim_to_molding\",\"top_trim_to_ceiling\",\"window_outside_width\",\"window_outside_height\",\"curtain_rod_to_floor\",\"1\",\"2\",\"3\",\"4\",\"5\",\"9\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\"],[\"window_a_w_top\",\"window_a_w_middle\",\"window_a_w_bottom\",\"window_a_h_left\",\"window_a_h_middle\",\"window_a_h_right\",\"window_a_sill_depth\",\"window_b_w_top\",\"window_b_w_middle\",\"window_b_w_bottom\",\"window_b_h_left\",\"window_b_h_middle\",\"window_b_h_right\",\"window_b_sill_depth\",\"floor_to_ceiling\",\"floor_to_trim\",\"floor_to_sill\",\"wall_to_wall\",\"left_wall_to_window\",\"left_wall_to_trim\",\"middle_a-b_width\",\"middle_a-b_trim_to_trim\",\"top_trim_to_obstruction\",\"top_trim_to_curtain_rod\",\"top_trim_to_molding\",\"top_trim_to_ceiling\",\"right_wall_to_trim\",\"right_wall_to_window\",\"window_a_b_outside_width\",\"window_a_b_outside_height\",\"curtain_rod_length\",\"trim_width\",\"curtain_rod_to_floor\"],[\"window_a_w_top\",\"window_a_w_middle\",\"window_a_w_bottom\",\"window_a_h_left\",\"window_a_h_middle\",\"window_a_h_right\",\"window_a_sill_depth\",\"window_b_w_top\",\"window_b_w_middle\",\"window_b_w_bottom\",\"window_b_h_left\",\"window_b_h_middle\",\"window_b_h_right\",\"window_b_sill_depth\",\"window_c_w_top\",\"window_c_w_middle\",\"window_c_w_bottom\",\"window_c_h_left\",\"window_c_h_middle\",\"window_c_h_right\",\"window_c_sill_depth\",\"floor_to_ceiling\",\"floor_to_trim\",\"floor_to_sill\",\"wall_to_wall\",\"left_wall_to_window\",\"left_wall_to_trim\",\"middle_a-b_width\",\"middle_a-b_trim_to_trim\",\"top_trim_to_obstruction\",\"top_trim_to_curtain_rod\",\"top_trim_to_molding\",\"top_trim_to_ceiling\",\"middle_b-c_trim_to_trim\",\"middle_b-c_width\",\"right_wall_to_trim\",\"right_wall_to_window\",\"window_a_c_outside_width\",\"window_a_c_outside_height\",\"curtain_rod_length\",\"trim_width\",\"curtain_rod_to_floor\"],[\"window_a_w_top\",\"window_a_w_middle\",\"window_a_w_bottom\",\"window_a_h_left\",\"window_a_h_middle\",\"window_a_h_right\",\"window_a_sill_depth\",\"window_b_w_top\",\"window_b_w_middle\",\"window_b_w_bottom\",\"window_b_h_left\",\"window_b_h_middle\",\"window_b_h_right\",\"window_b_sill_depth\",\"window_c_w_top\",\"window_c_w_middle\",\"window_c_w_bottom\",\"window_c_h_left\",\"window_c_h_middle\",\"window_c_h_right\",\"window_c_sill_depth\",\"window_d_w_top\",\"window_d_w_middle\",\"window_d_w_bottom\",\"window_d_h_left\",\"window_d_h_middle\",\"window_d_h_right\",\"window_d_sill_depth\",\"floor_to_ceiling\",\"floor_to_trim\",\"floor_to_sill\",\"wall_to_wall\",\"left_wall_to_window\",\"left_wall_to_trim\",\"middle_a-b_width\",\"middle_a-b_trim_to_trim\",\"top_trim_to_obstruction\",\"top_trim_to_curtain_rod\",\"top_trim_to_molding\",\"top_trim_to_ceiling\",\"middle_b-c_trim_to_trim\",\"middle_b-c_width\",\"middle_c-d_trim_to_trim\",\"middle_c-d_width\",\"right_wall_to_window\",\"right_wall_to_trim\",\"window_a-d_outside_width\",\"window_a-d_outside_height\",\"curtain_rod_length\",\"trim_width\",\"curtain_rod_to_floor\"],{\"0\":\"window_a_w_top\",\"1\":\"window_a_w_middle\",\"2\":\"window_a_w_bottom\",\"3\":\"window_a_h_left\",\"4\":\"window_a_h_middle\",\"5\":\"window_a_h_right\",\"6\":\"window_a_sill_depth\",\"7\":\"window_b_w_top\",\"8\":\"window_b_w_middle\",\"9\":\"window_b_w_bottom\",\"10\":\"window_b_h_left\",\"11\":\"window_b_h_middle\",\"12\":\"window_b_h_right\",\"13\":\"window_b_sill_depth\",\"14\":\"window_c_w_top\",\"15\":\"window_c_w_middle\",\"16\":\"window_c_w_bottom\",\"17\":\"window_c_h_left\",\"18\":\"window_c_h_middle\",\"19\":\"window_c_h_right\",\"20\":\"window_c_sill_depth\",\"21\":\"window_d_w_top\",\"22\":\"window_d_w_middle\",\"23\":\"window_d_w_bottom\",\"24\":\"window_d_h_left\",\"25\":\"window_d_h_middle\",\"26\":\"window_d_h_right\",\"27\":\"window_d_sill_depth\",\"28\":\"window_e_w_top\",\"29\":\"window_e_w_middle\",\"30\":\"window_e_w_bottom\",\"31\":\"window_e_h_left\",\"32\":\"window_e_h_middle\",\"33\":\"window_e_h_right\",\"34\":\"window_e_sill_depth\",\"35\":\"floor_to_ceiling\",\"36\":\"floor_to_trim\",\"37\":\"floor_to_sill\",\"38\":\"wall_to_wall\",\"39\":\"left_wall_to_window\",\"40\":\"left_wall_to_trim\",\"41\":\"middle_a-b_width\",\"42\":\"middle_a-b_trim_to_trim\",\"43\":\"window_a_to_break\",\"44\":\"window_b_to_break\",\"45\":\"top_trim_to_obstruction\",\"46\":\"top_trim_to_curtain_rod\",\"47\":\"top_trim_to_molding\",\"48\":\"top_trim_to_ceiling\",\"49\":\"middle_b-c_trim_to_trim\",\"50\":\"middle_b-c_width\",\"51\":\"middle_c-d_trim_to_trim\",\"52\":\"middle_c-d_width\",\"53\":\"middle_d-e_width\",\"54\":\"middle_d-e_trim_to_trim\",\"55\":\"window_e_to_break\",\"56\":\"window_d_to_break\",\"57\":\"window_a-e_outside_width\",\"58\":\"window_a-e_outside_height\",\"59\":\"right_wall_to_window\",\"60\":\"right_wall_to_trim\",\"61\":\"curtain_rod_length\",\"62\":\"trim_width\",\"63\":\"curtain_rod_to_floor\"},\"top_trim_to_curtain_rod\",\"top_trim_to_molding\",\"top_trim_to_ceiling\",\"right_wall_to_window\",\"right_wall_to_trim\",\"curtain_rod_length\",\"left_wall_to_trim\",\"window_a_w_top\",\"window_a_w_middle\",\"window_a_w_bottom\",\"window_a_h_left\",\"window_a_h_middle\",\"window_a_h_right\",\"window_a_sill_depth\",\"trim_width\",\"window_outside_width\",\"window_outside_height\",\"middle_a-b_width\",\"middle_a-b_trim_to_trim\",\"window_a_to_break\",\"window_b_to_break\",\"window_a-d_outside_width\",\"window_a-d_outside_height\",\"window_b-c_trim_to_trim\",\"window_b-c_width\",\"window_c-d_trim_to_trim\",\"window_c-d_width\",\"window_d-e_width\",\"window_d-e_trim_to_trim\",\"window_e_to_break\",\"window_d_to_break\",\"window_a-e_outside_width\",\"window_a-e_outside_height\",\"window_b_w_top\",\"window_b_w_middle\",\"window_b_w_bottom\",\"window_b_h_left\",\"window_b_h_middle\",\"window_b_h_right\",\"window_b_sill_depth\",\"window_v_w_top\",\"window_c_w_middle\",\"window_c_w_bottom\",\"window_c_h_left\",\"window_c_h_middle\",\"window_c_h_right\",\"window_c_sill_depth\",\"window_d_w_top\",\"window_d_w_middle\",\"window_d_w_bottom\",\"window_d_h_left\",\"window_d_h_middle\",\"window_d_h_right\",\"window_d_sill_depth\",\"window_e_w_top\",\"window_e_w_middle\",\"window_e_w_bottom\",\"window_e_h_left\",\"window_e_h_middle\",\"window_e_h_right\",\"window_e_sill_depth\",\"window_a_c_outside_width\",\"window_a_c_outside_height\"],\"6\":[\"height\",\"angle\",\"valance_height\",\"headroom\",\"coverage_depth\",\"opening_clearance\",\"width_cassette\",\"left_clearance\",\"right_clearance\"]}",
+    "measurement_unit": "Imperial",
+    "cash_sub_end_date": "2024-12-06",
+    "created_at": "2023-10-07T11:00:18.000000Z",
+    "stripe_id": "cus_UMDZo7QjHvu8z3",
+    "pm_type": "visa",
+    "pm_last_four": "4242",
+    "trial_ends_at": "2026-04-30T20:31:20.000000Z",
+    "last_plan_switch_at": "2026-01-05T11:54:27.000000Z",
+    "device_type": "iPhone",
+    "post": null
+  }
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- If `user_id` is not provided, returns the authenticated user's profile
+- Requires active subscription
+- Profile image URL may be empty if no image uploaded
+- `field_display_orders` contains custom field ordering preferences
+- Company owners have additional permissions
+
+

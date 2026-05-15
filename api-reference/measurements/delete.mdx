@@ -1,0 +1,67 @@
+---
+title: Delete Measurement
+api: 'POST /api/v1/measurements/delete'
+description: Delete a measurement
+---
+
+## Endpoint
+
+```
+POST /api/v1/measurements/delete
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="measurement_id" type="integer">
+  measurement id
+</ParamField>
+
+## Response
+
+
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/measurements/delete' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "measurement_id": 1
+}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/measurements/delete', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+  "measurement_id": 1
+})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+null
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required

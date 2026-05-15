@@ -1,0 +1,107 @@
+---
+title: Get Company Users
+api: 'POST /api/v1/user/get_company_user'
+description: Get all users in your company
+---
+
+## Endpoint
+
+```
+POST /api/v1/user/get_company_user
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+No request body required.
+
+## Response
+
+<ResponseField name="message" type="string">
+  message
+</ResponseField>
+<ResponseField name="data" type="array">
+  data
+  <Expandable title="data item">
+    <ResponseField name="id" type="integer">
+      id
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      name
+    </ResponseField>
+    <ResponseField name="phone_no" type="object">
+      phone no
+    </ResponseField>
+    <ResponseField name="profile_image" type="string">
+      profile image
+    </ResponseField>
+    <ResponseField name="email" type="string">
+      email
+    </ResponseField>  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/user/get_company_user' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/user/get_company_user', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Success.",
+  "data": [
+    {
+      "id": 717,
+      "name": "Nathan Eldridge iPhone",
+      "phone_no": null,
+      "profile_image": "http://localhost/fss/public/uploads/profile_image/",
+      "email": "netest26@test.com"
+    },
+    {
+      "id": 718,
+      "name": "Nathan Eldridge iPad",
+      "phone_no": null,
+      "profile_image": "http://localhost/fss/public/uploads/profile_image/",
+      "email": "ipadtest26@test.com"
+    },
+    {
+      "id": 719,
+      "name": "Kelly Eldridge iPhone",
+      "phone_no": null,
+      "profile_image": "http://localhost/fss/public/uploads/profile_image/",
+      "email": "ketest26@test.com"
+    }
+  ]
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required
+

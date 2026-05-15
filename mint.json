@@ -1,0 +1,133 @@
+{
+  "name": "FSS Measurement API",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#0D9373",
+    "light": "#07C983",
+    "dark": "#0D9373",
+    "anchors": {
+      "from": "#0D9373",
+      "to": "#07C983"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:support@fss-measurement.com"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://dashboard.fss-measurement.com"
+  },
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Documentation",
+      "icon": "book-open-cover",
+      "url": "https://docs.fss-measurement.com"
+    },
+    {
+      "name": "Community",
+      "icon": "slack",
+      "url": "https://community.fss-measurement.com"
+    },
+    {
+      "name": "Blog",
+      "icon": "newspaper",
+      "url": "https://blog.fss-measurement.com"
+    }
+  ],
+  "api": {
+    "baseUrl": "https://devoutly-hedge-surgical.ngrok-free.dev/fss/public",
+    "auth": {
+      "method": "key",
+      "name": "X-API-Token"
+    }
+  },
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "introduction"
+      ]
+    },
+    {
+      "group": "API Documentation",
+      "pages": [
+        "api-reference/overview",
+        "api-reference/errors"
+      ]
+    },
+    {
+      "group": "User Management",
+      "pages": [
+        "api-reference/user/get-profile",
+        "api-reference/user/get-company-user"
+      ]
+    },
+    {
+      "group": "Client Management",
+      "pages": [
+        "api-reference/client/add",
+        "api-reference/client/update",
+        "api-reference/client/delete",
+        "api-reference/client/search",
+        "api-reference/client/list",
+        "api-reference/client/user-client"
+      ]
+    },
+    {
+      "group": "Room Management",
+      "pages": [
+        "api-reference/room/measurement-type",
+        "api-reference/room/add",
+        "api-reference/room/update",
+        "api-reference/room/delete",
+        "api-reference/room/get-category",
+        "api-reference/room/get",
+        "api-reference/room/get-by-client-id"
+      ]
+    },
+    {
+      "group": "Admin Rooms",
+      "pages": [
+        "api-reference/adminroom/index"
+      ]
+    },
+    {
+      "group": "Measurements",
+      "pages": [
+        "api-reference/measurements/single-window-photo",
+        "api-reference/measurements/specialty-window",
+        "api-reference/measurements/series-window-draperies",
+        "api-reference/measurements/awning",
+        "api-reference/measurements/get",
+        "api-reference/measurements/delete"
+      ]
+    },
+    {
+      "group": "Lead Sources",
+      "pages": [
+        "api-reference/lead-source/get",
+        "api-reference/lead-source/add",
+        "api-reference/lead-source/update",
+        "api-reference/lead-source/user-leadsource"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/fss_measurement",
+    "github": "https://github.com/fss-measurement",
+    "linkedin": "https://www.linkedin.com/company/fss-measurement"
+  }
+}

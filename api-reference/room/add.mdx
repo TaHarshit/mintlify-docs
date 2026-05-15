@@ -1,0 +1,94 @@
+---
+title: Add Room
+api: 'POST /api/v1/room/add'
+description: Add a new room for a client
+---
+
+## Endpoint
+
+```
+POST /api/v1/room/add
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="client_id" type="integer" required>
+  client id
+</ParamField>
+
+<ParamField body="admin_room_id" type="integer" required>
+  Reference to the predefined room type.
+</ParamField>
+
+<ParamField body="name" type="string">
+  name
+</ParamField>
+
+## Response
+
+<ResponseField name="message" type="string">
+  message
+</ResponseField>
+<ResponseField name="data" type="object">
+  data
+  <Expandable title="data">
+    <ResponseField name="id" type="integer">
+      id
+    </ResponseField>  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/room/add' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "client_id": 1856,
+  "admin_room_id": 4,
+  "name": "Living Room"
+}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/room/add', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+  "client_id": 1856,
+  "admin_room_id": 4,
+  "name": "Living Room"
+})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Room added successfully.",
+  "data": {
+    "id": 4945
+  }
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required
+

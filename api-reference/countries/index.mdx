@@ -1,0 +1,90 @@
+---
+title: Get Countries
+api: 'POST /api/v1/countries/index'
+description: Get list of available countries
+---
+
+# Get Countries
+
+Get a list of all available countries.
+
+## Endpoint
+
+```
+POST /api/v1/countries/index
+```
+
+<Note>This endpoint does not require authentication</Note>
+
+## Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Content-Type | application/json | Yes |
+
+## Request Body
+
+```json
+{}
+```
+
+## Response
+
+<ResponseField name="status" type="string">
+  Success status
+</ResponseField>
+
+<ResponseField name="data" type="array">
+  Array of countries
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST http://localhost/fss/public/api/v1/countries/index \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://localhost/fss/public/api/v1/countries/index', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "status": "success",
+  "data": [
+    {
+      "id": 1,
+      "name": "United States",
+      "code": "US"
+    },
+    {
+      "id": 2,
+      "name": "Canada",
+      "code": "CA"
+    }
+  ]
+}
+```
+
+```json Error Response
+{
+  "status": "error",
+  "message": "Failed to fetch countries"
+}
+```
+
+</ResponseExample>

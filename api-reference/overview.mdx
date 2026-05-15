@@ -1,0 +1,216 @@
+---
+title: 'API Overview'
+description: 'Overview of the FSS Measurement API'
+---
+
+## Introduction
+
+The FSS Measurement API is a RESTful API that provides comprehensive functionality for managing window measurements, clients, rooms, and subscriptions. Built on Laravel, it offers robust authentication, data validation, and error handling.
+
+## Base URL
+
+```
+http://fssportal.com/api/v1
+```
+
+## API Characteristics
+
+<CardGroup cols={2}>
+  <Card title="RESTful Design" icon="code">
+    Follows REST principles with standard HTTP methods (GET, POST, PUT, DELETE)
+  </Card>
+  <Card title="JSON Format" icon="brackets-curly">
+    All requests and responses use JSON format
+  </Card>
+  <Card title="Rate Limited" icon="gauge">
+    60 requests per minute per user
+  </Card>
+  <Card title="Secure" icon="shield">
+    HTTPS only with Bearer token authentication
+  </Card>
+</CardGroup>
+
+## API Modules
+
+### User Management
+Complete user lifecycle management including registration, authentication, profile management, and team collaboration.
+
+**Key Features:**
+- User signup and signin
+- QR code authentication
+- Password reset functionality
+- Profile management
+- Company and team management
+- Custom field ordering
+
+### Client Management
+Manage client information, projects, and contact details.
+
+**Key Features:**
+- Add, update, and delete clients
+- Search clients by keyword
+- Client listing with pagination
+- Lead source tracking
+- Project management
+
+### Room Management
+Organize measurements by rooms within client projects.
+
+**Key Features:**
+- Add and manage rooms
+- Room categorization
+- Measurement type assignment
+- Room-based measurement retrieval
+
+### Measurements
+Comprehensive measurement tools for various window types.
+
+**Supported Types:**
+- Single Window
+- Single Window with Photo
+- Multiple Windows
+- Specialty Windows
+- Series Windows with Draperies
+- Awnings
+
+### Subscriptions & Payments
+Stripe-integrated subscription management.
+
+**Features:**
+- Payment initialization
+- Payment completion
+- Subscription status checking
+- Plan management
+
+### Settings & Configuration
+Application settings and reference data.
+
+**Includes:**
+- Countries list
+- How it works content
+- Lead sources
+- Admin room templates
+
+## Request Format
+
+All POST requests should include:
+
+```json
+{
+  "parameter1": "value1",
+  "parameter2": "value2"
+}
+```
+
+### Headers
+
+Authentication is handled globally in the API playground via the `X-API-Token` header.
+
+```
+X-API-Token: YOUR_API_TOKEN
+platform: WEB, IOS, or ANDROID
+Content-Type: application/json
+Accept: application/json
+```
+
+## Response Format
+
+### Success Response
+```json
+{
+  "message": "Operation successful",
+  "data": {
+    // Response data
+  }
+}
+```
+
+### Error Response
+```json
+{
+  "message": "Error description",
+  "errors": {
+    "field": ["Error message"]
+  },
+  "status": 400
+}
+```
+
+## HTTP Status Codes
+
+| Code | Description |
+|------|-------------|
+| 200 | Success |
+| 201 | Created |
+| 400 | Bad Request |
+| 401 | Unauthorized |
+| 403 | Forbidden |
+| 404 | Not Found |
+| 422 | Validation Error |
+| 429 | Too Many Requests |
+| 500 | Internal Server Error |
+
+## Pagination
+
+List endpoints support pagination:
+
+```json
+{
+  "data": [...],
+  "current_page": 1,
+  "per_page": 15,
+  "total": 100,
+  "last_page": 7
+}
+```
+
+## File Uploads
+
+File uploads use `multipart/form-data`:
+
+```bash
+curl --location 'http://fssportal.com/api/v1/user/signup' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--form 'name="John Doe"' \
+--form 'email="john@example.com"' \
+--form 'profile_image=@"/path/to/image.jpg"'
+```
+
+## Rate Limiting
+
+- **Limit**: 60 requests per minute per user
+- **Headers**: 
+  - `X-RateLimit-Limit`: Maximum requests
+  - `X-RateLimit-Remaining`: Remaining requests
+
+## Versioning
+
+Currently on version 1. Future versions will be indicated in the URL path:
+```
+/api/v2/endpoint
+```
+
+## SDKs and Libraries
+
+<CardGroup cols={3}>
+  <Card title="JavaScript" icon="js">
+    Native fetch API examples provided
+  </Card>
+  <Card title="Python" icon="python">
+    Requests library examples
+  </Card>
+  <Card title="PHP" icon="php">
+    cURL examples for Laravel integration
+  </Card>
+</CardGroup>
+
+## Testing
+
+Use the Postman collection included in your project:
+- `FSS Measurement Copy.postman_collection.json`
+
+## Support
+
+- **Documentation**: https://docs.fss-measurement.com
+- **Email**: support@fss-measurement.com
+- **Status**: https://status.fss-measurement.com

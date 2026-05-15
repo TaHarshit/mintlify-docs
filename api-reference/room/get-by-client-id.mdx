@@ -1,0 +1,67 @@
+---
+title: Get Room By Client ID
+api: 'POST /api/v1/room/get_by_client_id'
+description: Get room details by client ID
+---
+
+## Endpoint
+
+```
+POST /api/v1/room/get-by-client-id
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="client_id" type="integer">
+  client id
+</ParamField>
+
+## Response
+
+
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/room/get-by-client-id' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "client_id": 1856
+}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/room/get-by-client-id', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+  "client_id": 1856
+})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+null
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required

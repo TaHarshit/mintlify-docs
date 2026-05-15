@@ -1,0 +1,187 @@
+---
+title: 'Sign In'
+api: 'POST /api/v1/user/signin'
+description: 'Authenticate user and get access token'
+---
+
+## Endpoint
+
+```
+POST /api/v1/user/signin
+```
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+<ParamField header="platform" type="string" required>
+  WEB, IOS, or ANDROID
+</ParamField>
+
+## Request Body
+
+<ParamField body="email" type="string" required>
+  Registered email address.
+</ParamField>
+
+<ParamField body="password" type="string" required>
+  User account password.
+</ParamField>
+
+<ParamField body="device_token" type="string">
+  Device token for push notifications
+</ParamField>
+
+<ParamField body="platform" type="string" required>
+  Platform identifier: IOS, ANDROID, or WEB
+</ParamField>
+
+## Response
+
+<ResponseField name="message" type="string">
+  Success message
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="Authentication Data">
+    <ResponseField name="api_token" type="string">
+      Bearer token for authentication
+    </ResponseField>
+    <ResponseField name="user" type="object">
+      Complete user profile information
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/user/signin' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email": "john.doe@example.com",
+    "password": "SecurePass123",
+    "device_token": "",
+    "platform": "WEB"
+}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/user/signin', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    email: 'john.doe@example.com',
+    password: 'SecurePass123',
+    device_token: '',
+    platform: 'WEB'
+  })
+});
+
+const data = await response.json();
+console.log('Token:', data.data.api_token);
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'http://fssportal.com/api/v1/user/signin',
+    headers={
+        'X-API-Token': 'YOUR_API_TOKEN',
+        'Content-Type': 'application/json'
+    },
+    json={
+        'email': 'john.doe@example.com',
+        'password': 'SecurePass123',
+        'device_token': '',
+        'platform': 'WEB'
+    }
+)
+
+data = response.json()
+token = data['data']['api_token']
+```
+
+```php PHP
+<?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => 'http://fssportal.com/api/v1/user/signin',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_POST => true,
+  CURLOPT_HTTPHEADER => [
+    'X-API-Token: YOUR_API_TOKEN',
+    'Content-Type: application/json'
+  ],
+  CURLOPT_POSTFIELDS => json_encode([
+    'email' => 'john.doe@example.com',
+    'password' => 'SecurePass123',
+    'device_token' => '',
+    'platform' => 'WEB'
+  ])
+]);
+
+$response = curl_exec($curl);
+curl_close($curl);
+
+$data = json_decode($response, true);
+$token = $data['data']['api_token'];
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Login successful",
+  "data": {
+    "api_token": "abc123def456ghi789jkl012mno345pqr678stu901vwx234yz",
+    "user": {
+      "id": 123,
+      "user_type": 2,
+      "company_name": "176218755",
+      "own_company_name": "Doe Window Treatments",
+      "name": "John Doe",
+      "country_code": "+1",
+      "phone_no": "9173304645",
+      "profile_image": "https://fss-measurement-bucket.s3.amazonaws.com/profile_image/123.jpg",
+      "email": "john.doe@example.com",
+      "status": 1,
+      "company_owner": 1,
+      "solatech_focus_on": 0
+    }
+  }
+}
+```
+
+```json Error Response - Invalid Credentials
+{
+  "message": "Invalid email or password.",
+  "status": 401
+}
+```
+
+```json Error Response - Account Inactive
+{
+  "message": "Your account has been deactivated. Please contact support.",
+  "status": 403
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Store the `api_token` securely for subsequent API requests
+- Include the token in the Authorization header: `Bearer {api_token}`
+- Device token is optional but recommended for push notifications
+- Failed login attempts may trigger rate limiting
+- Account must be active (status = 1) to sign in

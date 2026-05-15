@@ -1,0 +1,657 @@
+---
+title: Series Window with Draperies
+api: 'POST /api/v1/measurements/series_window_with_draperies_add_edit'
+description: Add/edit window measurements with drapery specifications
+---
+
+## Endpoint
+
+```
+POST /api/v1/measurements/series_window_with_draperies_add_edit
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="id" type="integer">
+  id
+</ParamField>
+
+<ParamField body="user_id" type="integer" required>
+  user id
+</ParamField>
+
+<ParamField body="client_id" type="integer" required>
+  client id
+</ParamField>
+
+<ParamField body="room_id" type="integer" required>
+  room id
+</ParamField>
+
+<ParamField body="measurement_type_id" type="integer" required>
+  measurement type id
+</ParamField>
+
+<ParamField body="unit_type" type="string" required>
+  unit type
+</ParamField>
+
+<ParamField body="mount_type" type="string">
+  mount type
+</ParamField>
+
+<ParamField body="window_name" type="string" required>
+  window name
+</ParamField>
+
+<ParamField body="floor_to_ceiling" type="string">
+  floor to ceiling
+</ParamField>
+
+<ParamField body="floor_to_trim" type="string">
+  floor to trim
+</ParamField>
+
+<ParamField body="floor_to_sill" type="string">
+  floor to sill
+</ParamField>
+
+<ParamField body="wall_to_wall" type="string">
+  wall to wall
+</ParamField>
+
+<ParamField body="left_wall_to_window" type="string">
+  left wall to window
+</ParamField>
+
+<ParamField body="left_wall_to_trim" type="string">
+  left wall to trim
+</ParamField>
+
+<ParamField body="middle_a-b_width" type="string">
+  middle a-b width
+</ParamField>
+
+<ParamField body="middle_a-b_trim_to_trim" type="string">
+  middle a-b trim to trim
+</ParamField>
+
+<ParamField body="window_a_to_break" type="string">
+  window a to break
+</ParamField>
+
+<ParamField body="window_b_to_break" type="string">
+  window b to break
+</ParamField>
+
+<ParamField body="top_trim_to_obstruction" type="string">
+  top trim to obstruction
+</ParamField>
+
+<ParamField body="top_trim_to_curtain_rod" type="string">
+  top trim to curtain rod
+</ParamField>
+
+<ParamField body="top_trim_to_molding" type="string">
+  top trim to molding
+</ParamField>
+
+<ParamField body="top_trim_to_ceiling" type="string">
+  top trim to ceiling
+</ParamField>
+
+<ParamField body="middle_b-c_trim_to_trim" type="string">
+  middle b-c trim to trim
+</ParamField>
+
+<ParamField body="middle_b-c_width" type="string">
+  middle b-c width
+</ParamField>
+
+<ParamField body="middle_c-d_trim_to_trim" type="string">
+  middle c-d trim to trim
+</ParamField>
+
+<ParamField body="middle_c-d_width" type="string">
+  middle c-d width
+</ParamField>
+
+<ParamField body="middle_d-e_width" type="string">
+  middle d-e width
+</ParamField>
+
+<ParamField body="middle_d-e_trim_to_trim" type="string">
+  middle d-e trim to trim
+</ParamField>
+
+<ParamField body="window_e_to_break" type="string">
+  window e to break
+</ParamField>
+
+<ParamField body="window_d_to_break" type="string">
+  window d to break
+</ParamField>
+
+<ParamField body="window_a-e_outside_width" type="string">
+  window a-e outside width
+</ParamField>
+
+<ParamField body="window_a-e_outside_height" type="string">
+  window a-e outside height
+</ParamField>
+
+<ParamField body="right_wall_to_window" type="string">
+  right wall to window
+</ParamField>
+
+<ParamField body="right_wall_to_trim" type="string">
+  right wall to trim
+</ParamField>
+
+<ParamField body="curtain_rod_length" type="string">
+  curtain rod length
+</ParamField>
+
+<ParamField body="curtain_rod_to_floor" type="string">
+  curtain rod to floor
+</ParamField>
+
+<ParamField body="window_a_c_outside_width" type="string">
+  window a c outside width
+</ParamField>
+
+<ParamField body="window_a_c_outside_height" type="string">
+  window a c outside height
+</ParamField>
+
+<ParamField body="window_a-d_outside_width" type="string">
+  window a-d outside width
+</ParamField>
+
+<ParamField body="window_a-d_outside_height" type="string">
+  window a-d outside height
+</ParamField>
+
+<ParamField body="window_outside_width" type="string">
+  window outside width
+</ParamField>
+
+<ParamField body="window_outside_height" type="string">
+  window outside height
+</ParamField>
+
+<ParamField body="window_a_w_top" type="string">
+  window a w top
+</ParamField>
+
+<ParamField body="window_a_w_middle" type="string">
+  window a w middle
+</ParamField>
+
+<ParamField body="window_a_w_bottom" type="string">
+  window a w bottom
+</ParamField>
+
+<ParamField body="window_a_h_left" type="string">
+  window a h left
+</ParamField>
+
+<ParamField body="window_a_h_middle" type="string">
+  window a h middle
+</ParamField>
+
+<ParamField body="window_a_h_right" type="string">
+  window a h right
+</ParamField>
+
+<ParamField body="window_a_sill_depth" type="string">
+  window a sill depth
+</ParamField>
+
+<ParamField body="window_b_w_top" type="string">
+  window b w top
+</ParamField>
+
+<ParamField body="window_b_w_middle" type="string">
+  window b w middle
+</ParamField>
+
+<ParamField body="window_b_w_bottom" type="string">
+  window b w bottom
+</ParamField>
+
+<ParamField body="window_b_h_left" type="string">
+  window b h left
+</ParamField>
+
+<ParamField body="window_b_h_middle" type="string">
+  window b h middle
+</ParamField>
+
+<ParamField body="window_b_h_right" type="string">
+  window b h right
+</ParamField>
+
+<ParamField body="window_b_sill_depth" type="string">
+  window b sill depth
+</ParamField>
+
+<ParamField body="window_c_w_top" type="string">
+  window c w top
+</ParamField>
+
+<ParamField body="window_c_w_middle" type="string">
+  window c w middle
+</ParamField>
+
+<ParamField body="window_c_w_bottom" type="string">
+  window c w bottom
+</ParamField>
+
+<ParamField body="window_c_h_left" type="string">
+  window c h left
+</ParamField>
+
+<ParamField body="window_c_h_middle" type="string">
+  window c h middle
+</ParamField>
+
+<ParamField body="window_c_h_right" type="string">
+  window c h right
+</ParamField>
+
+<ParamField body="window_c_sill_depth" type="string">
+  window c sill depth
+</ParamField>
+
+<ParamField body="window_d_w_top" type="string">
+  window d w top
+</ParamField>
+
+<ParamField body="window_d_w_middle" type="string">
+  window d w middle
+</ParamField>
+
+<ParamField body="window_d_w_bottom" type="string">
+  window d w bottom
+</ParamField>
+
+<ParamField body="window_d_h_left" type="string">
+  window d h left
+</ParamField>
+
+<ParamField body="window_d_h_middle" type="string">
+  window d h middle
+</ParamField>
+
+<ParamField body="window_d_h_right" type="string">
+  window d h right
+</ParamField>
+
+<ParamField body="window_d_sill_depth" type="string">
+  window d sill depth
+</ParamField>
+
+<ParamField body="window_e_w_top" type="string">
+  window e w top
+</ParamField>
+
+<ParamField body="window_e_w_middle" type="string">
+  window e w middle
+</ParamField>
+
+<ParamField body="window_e_w_bottom" type="string">
+  window e w bottom
+</ParamField>
+
+<ParamField body="window_e_h_left" type="string">
+  window e h left
+</ParamField>
+
+<ParamField body="window_e_h_middle" type="string">
+  window e h middle
+</ParamField>
+
+<ParamField body="window_e_h_right" type="string">
+  window e h right
+</ParamField>
+
+<ParamField body="window_e_sill_depth" type="string">
+  window e sill depth
+</ParamField>
+
+<ParamField body="window_a_b_outside_width" type="string">
+  window a b outside width
+</ParamField>
+
+<ParamField body="window_a_b_outside_height" type="string">
+  window a b outside height
+</ParamField>
+
+<ParamField body="trim_width" type="string">
+  trim width
+</ParamField>
+
+<ParamField body="number_in_series" type="string">
+  The sequence number of this window in the series.
+</ParamField>
+
+<ParamField body="for_shutter" type="string">
+  for shutter
+</ParamField>
+
+<ParamField body="square_feet" type="string">
+  square feet
+</ParamField>
+
+<ParamField body="square_feet2" type="string">
+  square feet2
+</ParamField>
+
+<ParamField body="square_feet3" type="string">
+  square feet3
+</ParamField>
+
+<ParamField body="square_feet4" type="string">
+  square feet4
+</ParamField>
+
+<ParamField body="square_feet5" type="string">
+  square feet5
+</ParamField>
+
+<ParamField body="focus_width" type="string">
+  focus width
+</ParamField>
+
+<ParamField body="focus_width_key" type="string">
+  focus width key
+</ParamField>
+
+<ParamField body="focus_height" type="string">
+  focus height
+</ParamField>
+
+<ParamField body="focus_height_key" type="string">
+  focus height key
+</ParamField>
+
+<ParamField body="min_value_fields" type="string">
+  min value fields
+</ParamField>
+
+<ParamField body="note" type="string">
+  note
+</ParamField>
+
+<ParamField body="offset_value" type="string">
+  offset value
+</ParamField>
+
+<ParamField body="offset_value_keys" type="string">
+  offset value keys
+</ParamField>
+
+<ParamField body="installation_instructions" type="string">
+  installation instructions
+</ParamField>
+
+<ParamField body="total_custom_fields" type="integer">
+  total custom fields
+</ParamField>
+
+<ParamField body="custom_field" type="object">
+  custom field
+</ParamField>
+
+## Response
+
+<ResponseField name="message" type="string">
+  message
+</ResponseField>
+<ResponseField name="data" type="array">
+  data
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/measurements/series_window_with_draperies_add_edit' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "id": 0,
+  "user_id": 68,
+  "client_id": 1856,
+  "room_id": 4945,
+  "measurement_type_id": 1,
+  "unit_type": "metrix",
+  "mount_type": "",
+  "window_name": "test",
+  "floor_to_ceiling": "",
+  "floor_to_trim": "",
+  "floor_to_sill": "",
+  "wall_to_wall": "",
+  "left_wall_to_window": "",
+  "left_wall_to_trim": "",
+  "middle_a-b_width": "",
+  "middle_a-b_trim_to_trim": "",
+  "window_a_to_break": "",
+  "window_b_to_break": "",
+  "top_trim_to_obstruction": "",
+  "top_trim_to_curtain_rod": "",
+  "top_trim_to_molding": "",
+  "top_trim_to_ceiling": "",
+  "middle_b-c_trim_to_trim": "",
+  "middle_b-c_width": "",
+  "middle_c-d_trim_to_trim": "",
+  "middle_c-d_width": "",
+  "middle_d-e_width": "",
+  "middle_d-e_trim_to_trim": "",
+  "window_e_to_break": "",
+  "window_d_to_break": "",
+  "window_a-e_outside_width": "",
+  "window_a-e_outside_height": "",
+  "right_wall_to_window": "",
+  "right_wall_to_trim": "",
+  "curtain_rod_length": "",
+  "curtain_rod_to_floor": "",
+  "window_a_c_outside_width": "",
+  "window_a_c_outside_height": "",
+  "window_a-d_outside_width": "",
+  "window_a-d_outside_height": "",
+  "window_outside_width": "",
+  "window_outside_height": "",
+  "window_a_w_top": "",
+  "window_a_w_middle": "",
+  "window_a_w_bottom": "",
+  "window_a_h_left": "",
+  "window_a_h_middle": "",
+  "window_a_h_right": "",
+  "window_a_sill_depth": "",
+  "window_b_w_top": "",
+  "window_b_w_middle": "",
+  "window_b_w_bottom": "",
+  "window_b_h_left": "",
+  "window_b_h_middle": "",
+  "window_b_h_right": "",
+  "window_b_sill_depth": "",
+  "window_c_w_top": "",
+  "window_c_w_middle": "",
+  "window_c_w_bottom": "",
+  "window_c_h_left": "",
+  "window_c_h_middle": "",
+  "window_c_h_right": "",
+  "window_c_sill_depth": "",
+  "window_d_w_top": "",
+  "window_d_w_middle": "",
+  "window_d_w_bottom": "",
+  "window_d_h_left": "",
+  "window_d_h_middle": "",
+  "window_d_h_right": "",
+  "window_d_sill_depth": "",
+  "window_e_w_top": "",
+  "window_e_w_middle": "",
+  "window_e_w_bottom": "",
+  "window_e_h_left": "",
+  "window_e_h_middle": "",
+  "window_e_h_right": "",
+  "window_e_sill_depth": "",
+  "window_a_b_outside_width": "",
+  "window_a_b_outside_height": "",
+  "trim_width": "",
+  "number_in_series": "",
+  "for_shutter": "",
+  "square_feet": "",
+  "square_feet2": "",
+  "square_feet3": "",
+  "square_feet4": "",
+  "square_feet5": "",
+  "focus_width": "",
+  "focus_width_key": "",
+  "focus_height": "",
+  "focus_height_key": "",
+  "min_value_fields": "",
+  "note": "",
+  "offset_value": "",
+  "offset_value_keys": "",
+  "installation_instructions": "",
+  "total_custom_fields": 0,
+  "custom_field": []
+}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/measurements/series_window_with_draperies_add_edit', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+  "id": 0,
+  "user_id": 68,
+  "client_id": 1856,
+  "room_id": 4945,
+  "measurement_type_id": 1,
+  "unit_type": "metrix",
+  "mount_type": "",
+  "window_name": "test",
+  "floor_to_ceiling": "",
+  "floor_to_trim": "",
+  "floor_to_sill": "",
+  "wall_to_wall": "",
+  "left_wall_to_window": "",
+  "left_wall_to_trim": "",
+  "middle_a-b_width": "",
+  "middle_a-b_trim_to_trim": "",
+  "window_a_to_break": "",
+  "window_b_to_break": "",
+  "top_trim_to_obstruction": "",
+  "top_trim_to_curtain_rod": "",
+  "top_trim_to_molding": "",
+  "top_trim_to_ceiling": "",
+  "middle_b-c_trim_to_trim": "",
+  "middle_b-c_width": "",
+  "middle_c-d_trim_to_trim": "",
+  "middle_c-d_width": "",
+  "middle_d-e_width": "",
+  "middle_d-e_trim_to_trim": "",
+  "window_e_to_break": "",
+  "window_d_to_break": "",
+  "window_a-e_outside_width": "",
+  "window_a-e_outside_height": "",
+  "right_wall_to_window": "",
+  "right_wall_to_trim": "",
+  "curtain_rod_length": "",
+  "curtain_rod_to_floor": "",
+  "window_a_c_outside_width": "",
+  "window_a_c_outside_height": "",
+  "window_a-d_outside_width": "",
+  "window_a-d_outside_height": "",
+  "window_outside_width": "",
+  "window_outside_height": "",
+  "window_a_w_top": "",
+  "window_a_w_middle": "",
+  "window_a_w_bottom": "",
+  "window_a_h_left": "",
+  "window_a_h_middle": "",
+  "window_a_h_right": "",
+  "window_a_sill_depth": "",
+  "window_b_w_top": "",
+  "window_b_w_middle": "",
+  "window_b_w_bottom": "",
+  "window_b_h_left": "",
+  "window_b_h_middle": "",
+  "window_b_h_right": "",
+  "window_b_sill_depth": "",
+  "window_c_w_top": "",
+  "window_c_w_middle": "",
+  "window_c_w_bottom": "",
+  "window_c_h_left": "",
+  "window_c_h_middle": "",
+  "window_c_h_right": "",
+  "window_c_sill_depth": "",
+  "window_d_w_top": "",
+  "window_d_w_middle": "",
+  "window_d_w_bottom": "",
+  "window_d_h_left": "",
+  "window_d_h_middle": "",
+  "window_d_h_right": "",
+  "window_d_sill_depth": "",
+  "window_e_w_top": "",
+  "window_e_w_middle": "",
+  "window_e_w_bottom": "",
+  "window_e_h_left": "",
+  "window_e_h_middle": "",
+  "window_e_h_right": "",
+  "window_e_sill_depth": "",
+  "window_a_b_outside_width": "",
+  "window_a_b_outside_height": "",
+  "trim_width": "",
+  "number_in_series": "",
+  "for_shutter": "",
+  "square_feet": "",
+  "square_feet2": "",
+  "square_feet3": "",
+  "square_feet4": "",
+  "square_feet5": "",
+  "focus_width": "",
+  "focus_width_key": "",
+  "focus_height": "",
+  "focus_height_key": "",
+  "min_value_fields": "",
+  "note": "",
+  "offset_value": "",
+  "offset_value_keys": "",
+  "installation_instructions": "",
+  "total_custom_fields": 0,
+  "custom_field": []
+})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Measurement added successfully!",
+  "data": []
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required

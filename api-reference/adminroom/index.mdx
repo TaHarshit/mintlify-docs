@@ -1,0 +1,304 @@
+---
+title: Get Admin Rooms
+api: 'POST /api/v1/adminroom/index'
+description: Get all admin-defined room types
+---
+
+## Endpoint
+
+```
+POST /api/v1/adminroom/index
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+No request body required.
+
+## Response
+
+<ResponseField name="message" type="string">
+  message
+</ResponseField>
+<ResponseField name="data" type="array">
+  data
+  <Expandable title="data item">
+    <ResponseField name="id" type="integer">
+      id
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      name
+    </ResponseField>  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/adminroom/index' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/adminroom/index', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Room type get successfully.",
+  "data": [
+    {
+      "id": 3,
+      "name": "Attic"
+    },
+    {
+      "id": 4,
+      "name": "Bathroom 1"
+    },
+    {
+      "id": 5,
+      "name": "Bathroom 2"
+    },
+    {
+      "id": 6,
+      "name": "Bathroom 3"
+    },
+    {
+      "id": 7,
+      "name": "Bathroom 4"
+    },
+    {
+      "id": 8,
+      "name": "Bathroom 5"
+    },
+    {
+      "id": 9,
+      "name": "Bathroom 6"
+    },
+    {
+      "id": 10,
+      "name": "Bathroom 7"
+    },
+    {
+      "id": 11,
+      "name": "Bathroom 8"
+    },
+    {
+      "id": 12,
+      "name": "Bedroom 1"
+    },
+    {
+      "id": 13,
+      "name": "Bedroom 2"
+    },
+    {
+      "id": 14,
+      "name": "Bedroom 3"
+    },
+    {
+      "id": 15,
+      "name": "Bedroom 4"
+    },
+    {
+      "id": 16,
+      "name": "Bedroom 5"
+    },
+    {
+      "id": 17,
+      "name": "Bedroom 6"
+    },
+    {
+      "id": 18,
+      "name": "Bedroom 7"
+    },
+    {
+      "id": 19,
+      "name": "Bedroom 8"
+    },
+    {
+      "id": 20,
+      "name": "Breakfast Nook"
+    },
+    {
+      "id": 21,
+      "name": "Den"
+    },
+    {
+      "id": 22,
+      "name": "Downstairs Hallway"
+    },
+    {
+      "id": 23,
+      "name": "Downstairs Living Room"
+    },
+    {
+      "id": 24,
+      "name": "Family Room"
+    },
+    {
+      "id": 25,
+      "name": "Formal Dining Room"
+    },
+    {
+      "id": 26,
+      "name": "Formal Living Room"
+    },
+    {
+      "id": 27,
+      "name": "Foyer"
+    },
+    {
+      "id": 28,
+      "name": "Front Door"
+    },
+    {
+      "id": 29,
+      "name": "Game Room"
+    },
+    {
+      "id": 30,
+      "name": "Garage"
+    },
+    {
+      "id": 31,
+      "name": "Guest House"
+    },
+    {
+      "id": 32,
+      "name": "Half Bath"
+    },
+    {
+      "id": 33,
+      "name": "Her Closet"
+    },
+    {
+      "id": 34,
+      "name": "His Closet"
+    },
+    {
+      "id": 35,
+      "name": "Kitchen"
+    },
+    {
+      "id": 36,
+      "name": "Laundry Room"
+    },
+    {
+      "id": 37,
+      "name": "Library"
+    },
+    {
+      "id": 38,
+      "name": "Media Room"
+    },
+    {
+      "id": 39,
+      "name": "Misc. Closet"
+    },
+    {
+      "id": 40,
+      "name": "Misc. Door"
+    },
+    {
+      "id": 41,
+      "name": "Mother-in-law Suite"
+    },
+    {
+      "id": 42,
+      "name": "Mud Room"
+    },
+    {
+      "id": 43,
+      "name": "Office 1"
+    },
+    {
+      "id": 44,
+      "name": "Office 2"
+    },
+    {
+      "id": 45,
+      "name": "Pantry"
+    },
+    {
+      "id": 46,
+      "name": "Patio"
+    },
+    {
+      "id": 47,
+      "name": "Patio Door"
+    },
+    {
+      "id": 48,
+      "name": "Play Room"
+    },
+    {
+      "id": 49,
+      "name": "Pocket Office"
+    },
+    {
+      "id": 50,
+      "name": "Pool Bath"
+    },
+    {
+      "id": 51,
+      "name": "Pool House"
+    },
+    {
+      "id": 52,
+      "name": "Primary Bathroom"
+    },
+    {
+      "id": 53,
+      "name": "Primary Bedroom"
+    },
+    {
+      "id": 54,
+      "name": "Stairs"
+    },
+    {
+      "id": 55,
+      "name": "Study"
+    },
+    {
+      "id": 56,
+      "name": "Theater Room"
+    },
+    {
+      "id": 57,
+      "name": "Upstairs Balcony"
+    },
+    {
+      "id": 58,
+      "name": "Upstairs Hallway"
+    },
+    {
+      "id": 59,
+      "name": "Upstairs Living Room"
+    }
+  ]
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required

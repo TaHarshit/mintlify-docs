@@ -1,0 +1,185 @@
+---
+title: 'QR Code Sign In'
+api: 'POST /api/v1/user/qrcode_signin'
+description: 'Authenticate using QR code'
+---
+
+## Endpoint
+
+```
+POST /api/v1/user/qrcode_signin
+```
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+<ParamField header="platform" type="string" required>
+  WEB, IOS, or ANDROID
+</ParamField>WEB, IOS, or ANDROID | Yes |
+| api-key | FSS2023 | Yes |
+| Content-Type | application/json | Yes |
+| Accept | application/json | Yes |
+
+## Request Body
+
+<ParamField body="qr_code" type="string" required>
+  QR code data/token
+</ParamField>
+
+<ParamField body="device_token" type="string">
+  Device token for push notifications
+</ParamField>
+
+<ParamField body="platform" type="string" required>
+  Platform identifier: IOS, ANDROID, or WEB
+</ParamField>
+
+## Response
+
+<ResponseField name="message" type="string">
+  Success message
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="Authentication Data">
+    <ResponseField name="api_token" type="string">
+      Bearer token for authentication
+    </ResponseField>
+    <ResponseField name="user" type="object">
+      Complete user profile information
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/user/qrcode_signin' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "qr_code": "QR_CODE_DATA_HERE",
+    "device_token": "",
+    "platform": "WEB"
+}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/user/qrcode_signin', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    qr_code: 'QR_CODE_DATA_HERE',
+    device_token: '',
+    platform: 'WEB'
+  })
+});
+
+const data = await response.json();
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'http://fssportal.com/api/v1/user/qrcode_signin',
+    headers={
+        'X-API-Token': 'YOUR_API_TOKEN',
+        'Content-Type': 'application/json'
+    },
+    json={
+        'qr_code': 'QR_CODE_DATA_HERE',
+        'device_token': '',
+        'platform': 'WEB'
+    }
+)
+
+data = response.json()
+```
+
+```php PHP
+<?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => 'http://fssportal.com/api/v1/user/qrcode_signin',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_POST => true,
+  CURLOPT_HTTPHEADER => [
+    'X-API-Token: YOUR_API_TOKEN',
+    'Content-Type: application/json'
+  ],
+  CURLOPT_POSTFIELDS => json_encode([
+    'qr_code' => 'QR_CODE_DATA_HERE',
+    'device_token' => '',
+    'platform' => 'WEB'
+  ])
+]);
+
+$response = curl_exec($curl);
+curl_close($curl);
+
+$data = json_decode($response, true);
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "QR code authentication successful",
+  "data": {
+    "api_token": "abc123def456ghi789jkl012mno345pqr678stu901vwx234yz",
+    "user": {
+      "id": 123,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "phone_no": "9173304645",
+      "profile_image": "https://fss-measurement-bucket.s3.amazonaws.com/profile_image/123.jpg",
+      "company_name": "176218755",
+      "own_company_name": "Doe Window Treatments",
+      "status": 1
+    }
+  }
+}
+```
+
+```json Error Response - Invalid QR Code
+{
+  "message": "Invalid or expired QR code.",
+  "status": 401
+}
+```
+
+</ResponseExample>
+
+## QR Code Authentication Flow
+
+<Steps>
+  <Step title="Generate QR Code">
+    User generates a QR code from their authenticated session
+  </Step>
+  <Step title="Scan QR Code">
+    Another device scans the QR code to extract the authentication token
+  </Step>
+  <Step title="Authenticate">
+    Device sends the QR code data to this endpoint
+  </Step>
+  <Step title="Receive Token">
+    Device receives API token and can access the account
+  </Step>
+</Steps>
+
+## Notes
+
+- QR codes have a limited validity period
+- QR code can only be used once for security
+- Useful for quick authentication on new devices
+- Device token is optional but recommended for push notifications
+- Store the returned API token securely

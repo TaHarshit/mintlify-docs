@@ -1,0 +1,92 @@
+---
+title: Get Measurement Type
+api: 'POST /api/v1/room/measurement_type'
+description: Get available measurement types
+---
+
+## Endpoint
+
+```
+POST /api/v1/room/measurement_type
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+No request body required.
+
+## Response
+
+<ResponseField name="message" type="string">
+  message
+</ResponseField>
+<ResponseField name="data" type="array">
+  data
+  <Expandable title="data item">
+    <ResponseField name="id" type="integer">
+      id
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      name
+    </ResponseField>  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/room/measurement_type' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/room/measurement_type', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Measurement type get successfully.",
+  "data": [
+    {
+      "id": 2,
+      "name": "Single Window"
+    },
+    {
+      "id": 3,
+      "name": "Multi Window"
+    },
+    {
+      "id": 4,
+      "name": "Specialty Window"
+    },
+    {
+      "id": 5,
+      "name": "Windows in Series with Draperies"
+    }
+  ]
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required

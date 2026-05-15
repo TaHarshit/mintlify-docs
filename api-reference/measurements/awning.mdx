@@ -1,0 +1,115 @@
+---
+title: Awning Measurement
+api: 'POST /api/v1/measurements/awning_measurement_add_edit'
+description: Add/edit awning measurements
+---
+
+# Awning Measurement
+
+Add or update awning measurements.
+
+## Endpoint
+
+```
+POST /api/v1/measurements/awning_measurement_add_edit
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="client_id" type="integer" required>
+  Client ID
+</ParamField>
+
+<ParamField body="awning_type" type="string">
+  Awning type (retractable, stationary)
+</ParamField>
+
+<ParamField body="width" type="integer">
+  Awning width
+</ParamField>
+
+<ParamField body="projection" type="integer">
+  Awning projection
+</ParamField>
+
+<ParamField body="mount_height" type="integer">
+  Mount height
+</ParamField>
+
+## Response
+
+<ResponseField name="status" type="string">
+  Success status
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  Response data
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST http://localhost/fss/public/api/v1/measurements/awning_measurement_add_edit \
+  -H "X-API-Token: YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "client_id": 456,
+    "awning_type": "retractable",
+    "width": 120,
+    "projection": 60,
+    "mount_height": 96
+  }'
+```
+
+```javascript JavaScript
+const response = await fetch('http://localhost/fss/public/api/v1/measurements/awning_measurement_add_edit', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    client_id: 456,
+    awning_type: 'retractable',
+    width: 120,
+    projection: 60,
+    mount_height: 96
+  })
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "status": "success",
+  "data": {
+    "id": 794,
+    "awning_type": "retractable",
+    "dimensions": {
+      "width": 120,
+      "projection": 60,
+      "mount_height": 96
+    }
+  }
+}
+```
+
+```json Error Response
+{
+  "status": "error",
+  "message": "Validation failed"
+}
+```
+
+</ResponseExample>

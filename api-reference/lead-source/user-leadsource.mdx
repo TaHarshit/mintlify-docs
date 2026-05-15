@@ -1,0 +1,324 @@
+---
+title: Get User Lead Sources
+api: 'POST /api/v1/lead_source/user_leadsource'
+description: Get lead sources created by the user
+---
+
+## Endpoint
+
+```
+POST /api/v1/lead_source/user_leadsource
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+No request body required.
+
+## Response
+
+<ResponseField name="message" type="string">
+  message
+</ResponseField>
+<ResponseField name="data" type="object">
+  data
+  <Expandable title="data">
+    <ResponseField name="current_page" type="integer">
+      current page
+    </ResponseField>
+    <ResponseField name="data" type="array">
+      data
+      <Expandable title="data item">
+        <ResponseField name="id" type="integer">
+          id
+        </ResponseField>
+        <ResponseField name="company_name" type="string">
+          company name
+        </ResponseField>
+        <ResponseField name="name" type="string">
+          name
+        </ResponseField>
+        <ResponseField name="surname" type="string">
+          surname
+        </ResponseField>
+        <ResponseField name="email" type="string">
+          email
+        </ResponseField>
+        <ResponseField name="phone_no" type="string">
+          phone no
+        </ResponseField>
+        <ResponseField name="address" type="string">
+          address
+        </ResponseField>
+        <ResponseField name="state" type="string">
+          state
+        </ResponseField>
+        <ResponseField name="city" type="string">
+          city
+        </ResponseField>
+        <ResponseField name="zip_code" type="string">
+          zip code
+        </ResponseField>      </Expandable>
+    </ResponseField>
+    <ResponseField name="first_page_url" type="string">
+      first page url
+    </ResponseField>
+    <ResponseField name="from" type="integer">
+      from
+    </ResponseField>
+    <ResponseField name="last_page" type="integer">
+      last page
+    </ResponseField>
+    <ResponseField name="last_page_url" type="string">
+      last page url
+    </ResponseField>
+    <ResponseField name="links" type="array">
+      links
+      <Expandable title="links item">
+        <ResponseField name="url" type="object">
+          url
+        </ResponseField>
+        <ResponseField name="label" type="string">
+          label
+        </ResponseField>
+        <ResponseField name="active" type="boolean">
+          active
+        </ResponseField>      </Expandable>
+    </ResponseField>
+    <ResponseField name="next_page_url" type="object">
+      next page url
+    </ResponseField>
+    <ResponseField name="path" type="string">
+      path
+    </ResponseField>
+    <ResponseField name="per_page" type="integer">
+      per page
+    </ResponseField>
+    <ResponseField name="prev_page_url" type="object">
+      prev page url
+    </ResponseField>
+    <ResponseField name="to" type="integer">
+      to
+    </ResponseField>
+    <ResponseField name="total" type="integer">
+      total
+    </ResponseField>  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/lead_source/user_leadsource' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/lead_source/user_leadsource', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Lead Source get successfully.",
+  "data": {
+    "current_page": 1,
+    "data": [
+      {
+        "id": 148,
+        "company_name": "630311275",
+        "name": "Harshit3",
+        "surname": "Chauhan",
+        "email": "harshitchauhan5922+lc2@gmail.com",
+        "phone_no": "7203927561",
+        "address": "",
+        "state": "",
+        "city": "",
+        "zip_code": ""
+      },
+      {
+        "id": 147,
+        "company_name": "Hap Tech",
+        "name": "Harshit2",
+        "surname": "Chauhan",
+        "email": "harshitchauhan5922+le2@gmail.com",
+        "phone_no": "7203927561",
+        "address": "A-901 Ami Heights, Arihant nagar-1, b/h F.C.I Godaun, Jamnag",
+        "state": "Gujarat",
+        "city": "Rakot",
+        "zip_code": "110001"
+      },
+      {
+        "id": 146,
+        "company_name": "Hap Tech",
+        "name": "Harshit",
+        "surname": "Chauhan",
+        "email": "harshitchauhan5922+lead2@gmail.com",
+        "phone_no": "7203927561",
+        "address": "A-901 Ami Heights, Arihant nagar-1, b/h F.C.I Godaun, Jamnag",
+        "state": "Gujarat",
+        "city": "Rakot",
+        "zip_code": "110001"
+      },
+      {
+        "id": 76,
+        "company_name": "",
+        "name": "Sn",
+        "surname": "Aa",
+        "email": "ae@gmail.cm",
+        "phone_no": "12345678",
+        "address": "",
+        "state": "Not Found",
+        "city": "",
+        "zip_code": ""
+      },
+      {
+        "id": 75,
+        "company_name": "",
+        "name": "Snv",
+        "surname": "Rtr",
+        "email": "ddddnv@gmail.com",
+        "phone_no": "",
+        "address": "",
+        "state": "Not Found",
+        "city": "",
+        "zip_code": ""
+      },
+      {
+        "id": 60,
+        "company_name": "Smith Construction",
+        "name": "John",
+        "surname": "Smith",
+        "email": "j.smith@smith.con",
+        "phone_no": "3692572580",
+        "address": "123 Street Rd.",
+        "state": "Arkansas",
+        "city": "Boren",
+        "zip_code": "75286"
+      },
+      {
+        "id": 59,
+        "company_name": "Deutsch Interiors",
+        "name": "Sally",
+        "surname": "Smith",
+        "email": "sally@di.com",
+        "phone_no": "",
+        "address": "",
+        "state": "Not Found",
+        "city": "",
+        "zip_code": ""
+      },
+      {
+        "id": 51,
+        "company_name": "Techavtra",
+        "name": "Priyanka",
+        "surname": "Nagvadia",
+        "email": "priyanka@gmail.com",
+        "phone_no": "",
+        "address": "KKv hall",
+        "state": "CT",
+        "city": "Rajkot",
+        "zip_code": "361001"
+      },
+      {
+        "id": 50,
+        "company_name": "TEch",
+        "name": "Dhyara",
+        "surname": "Nagvadia",
+        "email": "dh@gmail.com",
+        "phone_no": "",
+        "address": "Kalavad raod",
+        "state": "DE",
+        "city": "Rajkot",
+        "zip_code": "361001"
+      },
+      {
+        "id": 20,
+        "company_name": "lead",
+        "name": "Ski",
+        "surname": "Ms",
+        "email": "lea@gmail.com",
+        "phone_no": "8460008773",
+        "address": "F",
+        "state": "California",
+        "city": "S",
+        "zip_code": "350004"
+      },
+      {
+        "id": 5,
+        "company_name": "Test1",
+        "name": "Harshit009",
+        "surname": "Chauhan",
+        "email": "harshitchauhan@gmail.com",
+        "phone_no": "",
+        "address": "Test Address",
+        "state": "Not Found",
+        "city": "Rajkot",
+        "zip_code": "360006"
+      },
+      {
+        "id": 3,
+        "company_name": "Pyjkkajkadfasdf",
+        "name": "AVNI 12345",
+        "surname": "TECHAVTRA",
+        "email": "Avni.thakrar@gmail.com",
+        "phone_no": "",
+        "address": "Rajkot",
+        "state": "Not Found",
+        "city": "Rajkot",
+        "zip_code": "3611002"
+      }
+    ],
+    "first_page_url": "http://localhost/fss/public/api/v1/lead_source/user_leadsource?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "http://localhost/fss/public/api/v1/lead_source/user_leadsource?page=1",
+    "links": [
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "active": false
+      },
+      {
+        "url": "http://localhost/fss/public/api/v1/lead_source/user_leadsource?page=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": null,
+        "label": "Next &raquo;",
+        "active": false
+      }
+    ],
+    "next_page_url": null,
+    "path": "http://localhost/fss/public/api/v1/lead_source/user_leadsource",
+    "per_page": 20,
+    "prev_page_url": null,
+    "to": 12,
+    "total": 12
+  }
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required

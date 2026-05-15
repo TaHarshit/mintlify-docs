@@ -1,0 +1,370 @@
+---
+title: 'Error Handling'
+description: 'Understanding API errors and how to handle them'
+---
+
+## Error Response Format
+
+All error responses follow a consistent format:
+
+```json
+{
+  "message": "Human-readable error message",
+  "errors": {
+    "field_name": [
+      "Specific error for this field"
+    ]
+  },
+  "status": 400
+}
+```
+
+## HTTP Status Codes
+
+### 2xx Success
+
+| Code | Status | Description |
+|------|--------|-------------|
+| 200 | OK | Request successful |
+| 201 | Created | Resource created successfully |
+
+### 4xx Client Errors
+
+| Code | Status | Description |
+|------|--------|-------------|
+| 400 | Bad Request | Invalid request format or parameters |
+| 401 | Unauthorized | Missing or invalid authentication token |
+| 403 | Forbidden | Valid token but insufficient permissions or subscription required |
+| 404 | Not Found | Resource not found |
+| 422 | Unprocessable Entity | Validation errors |
+| 429 | Too Many Requests | Rate limit exceeded |
+
+### 5xx Server Errors
+
+| Code | Status | Description |
+|------|--------|-------------|
+| 500 | Internal Server Error | Server encountered an error |
+| 503 | Service Unavailable | Service temporarily unavailable |
+
+## Common Error Scenarios
+
+### Authentication Errors
+
+<AccordionGroup>
+  <Accordion title="401 - Missing Token">
+    **Error:**
+    ```json
+    {
+      "message": "Unauthenticated.",
+      "status": 401
+    }
+    ```
+    
+    **Solution:**
+    - Ensure you're including the `Authorization: Bearer {token}` header
+    - Verify the token is valid and not expired
+    - Sign in again to get a new token
+  </Accordion>
+
+  <Accordion title="401 - Invalid Token">
+    **Error:**
+    ```json
+    {
+      "message": "Invalid authentication token.",
+      "status": 401
+    }
+    ```
+    
+    **Solution:**
+    - Token may have been invalidated
+    - User may have changed password
+    - Sign in again to get a new token
+  </Accordion>
+
+  <Accordion title="403 - Subscription Required">
+    **Error:**
+    ```json
+    {
+      "message": "Active subscription required to access this resource.",
+      "status": 403
+    }
+    ```
+    
+    **Solution:**
+    - Check subscription status via `/transactions/get_user_current_plan`
+    - Subscribe to a plan via `/transactions/init-payment`
+    - Contact support if subscription should be active
+  </Accordion>
+</AccordionGroup>
+
+### Validation Errors
+
+<AccordionGroup>
+  <Accordion title="422 - Validation Failed">
+    **Error:**
+    ```json
+    {
+      "message": "The given data was invalid.",
+      "errors": {
+        "email": [
+          "The email field is required."
+        ],
+        "password": [
+          "The password must be at least 8 characters."
+        ]
+      },
+      "status": 422
+    }
+    ```
+    
+    **Solution:**
+    - Review the `errors` object for specific field errors
+    - Correct the invalid fields
+    - Ensure all required fields are provided
+    - Match the expected data types and formats
+  </Accordion>
+
+  <Accordion title="422 - Duplicate Entry">
+    **Error:**
+    ```json
+    {
+      "message": "The email has already been taken.",
+      "errors": {
+        "email": [
+          "The email has already been taken."
+        ]
+      },
+      "status": 422
+    }
+    ```
+    
+    **Solution:**
+    - Use a different email address
+    - Sign in if you already have an account
+    - Use forgot password if you can't remember credentials
+  </Accordion>
+</AccordionGroup>
+
+### Rate Limiting
+
+<Accordion title="429 - Too Many Requests">
+  **Error:**
+  ```json
+  {
+    "message": "Too many requests. Please try again later.",
+    "status": 429
+  }
+  ```
+  
+  **Headers:**
+  ```
+  X-RateLimit-Limit: 60
+  X-RateLimit-Remaining: 0
+  Retry-After: 60
+  ```
+  
+  **Solution:**
+  - Wait for the time specified in `Retry-After` header
+  - Implement exponential backoff in your application
+  - Cache responses when possible
+  - Batch requests to reduce API calls
+</Accordion>
+
+### Resource Errors
+
+<AccordionGroup>
+  <Accordion title="404 - Not Found">
+    **Error:**
+    ```json
+    {
+      "message": "Resource not found.",
+      "status": 404
+    }
+    ```
+    
+    **Solution:**
+    - Verify the resource ID is correct
+    - Check if the resource was deleted
+    - Ensure you have permission to access the resource
+  </Accordion>
+
+  <Accordion title="400 - Bad Request">
+    **Error:**
+    ```json
+    {
+      "message": "Invalid request parameters.",
+      "status": 400
+    }
+    ```
+    
+    **Solution:**
+    - Review API documentation for correct parameters
+    - Ensure JSON is properly formatted
+    - Check data types match expected values
+  </Accordion>
+</AccordionGroup>
+
+## Error Handling Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Retry Logic" icon="rotate">
+    Implement exponential backoff for 5xx errors and rate limits
+  </Card>
+  <Card title="Logging" icon="file-lines">
+    Log error responses for debugging and monitoring
+  </Card>
+  <Card title="User Feedback" icon="message">
+    Display user-friendly error messages from the API
+  </Card>
+  <Card title="Validation" icon="check">
+    Validate data client-side before sending to API
+  </Card>
+</CardGroup>
+
+## Code Examples
+
+<CodeGroup>
+
+```javascript JavaScript
+async function makeAPIRequest(endpoint, options) {
+  try {
+    const response = await fetch(endpoint, options);
+    const data = await response.json();
+    
+    if (!response.ok) {
+      // Handle different error types
+      switch (response.status) {
+        case 401:
+          // Redirect to login
+          console.error('Authentication required');
+          break;
+        case 403:
+          console.error('Subscription required');
+          break;
+        case 422:
+          // Display validation errors
+          console.error('Validation errors:', data.errors);
+          break;
+        case 429:
+          // Implement retry with backoff
+          const retryAfter = response.headers.get('Retry-After');
+          console.error(`Rate limited. Retry after ${retryAfter}s`);
+          break;
+        default:
+          console.error('API error:', data.message);
+      }
+      throw new Error(data.message);
+    }
+    
+    return data;
+  } catch (error) {
+    console.error('Request failed:', error);
+    throw error;
+  }
+}
+```
+
+```python Python
+import requests
+import time
+
+def make_api_request(endpoint, method='GET', **kwargs):
+    max_retries = 3
+    retry_delay = 1
+    
+    for attempt in range(max_retries):
+        try:
+            response = requests.request(method, endpoint, **kwargs)
+            data = response.json()
+            
+            if response.status_code == 429:
+                retry_after = int(response.headers.get('Retry-After', 60))
+                print(f'Rate limited. Waiting {retry_after}s...')
+                time.sleep(retry_after)
+                continue
+            
+            if not response.ok:
+                if response.status_code == 401:
+                    raise Exception('Authentication required')
+                elif response.status_code == 403:
+                    raise Exception('Subscription required')
+                elif response.status_code == 422:
+                    raise Exception(f'Validation errors: {data.get("errors")}')
+                else:
+                    raise Exception(data.get('message', 'API error'))
+            
+            return data
+            
+        except requests.exceptions.RequestException as e:
+            if attempt == max_retries - 1:
+                raise
+            time.sleep(retry_delay * (2 ** attempt))
+    
+    raise Exception('Max retries exceeded')
+```
+
+```php PHP
+<?php
+
+function makeAPIRequest($endpoint, $method = 'GET', $data = null) {
+    $maxRetries = 3;
+    $retryDelay = 1;
+    
+    for ($attempt = 0; $attempt < $maxRetries; $attempt++) {
+        $ch = curl_init($endpoint);
+        
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        curl_setopt($ch, CURLOPT_HEADER, true);
+        
+        if ($data) {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        }
+        
+        $response = curl_exec($ch);
+        $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+        $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        
+        $header = substr($response, 0, $headerSize);
+        $body = substr($response, $headerSize);
+        $data = json_decode($body, true);
+        
+        curl_close($ch);
+        
+        if ($statusCode == 429) {
+            preg_match('/Retry-After: (\d+)/', $header, $matches);
+            $retryAfter = $matches[1] ?? 60;
+            error_log("Rate limited. Waiting {$retryAfter}s...");
+            sleep($retryAfter);
+            continue;
+        }
+        
+        if ($statusCode >= 400) {
+            switch ($statusCode) {
+                case 401:
+                    throw new Exception('Authentication required');
+                case 403:
+                    throw new Exception('Subscription required');
+                case 422:
+                    throw new Exception('Validation errors: ' . json_encode($data['errors']));
+                default:
+                    throw new Exception($data['message'] ?? 'API error');
+            }
+        }
+        
+        return $data;
+    }
+    
+    throw new Exception('Max retries exceeded');
+}
+```
+
+</CodeGroup>
+
+## Support
+
+If you encounter persistent errors:
+
+1. Check the [API Status Page](https://status.fss-measurement.com)
+2. Review the [Documentation](https://docs.fss-measurement.com)
+3. Contact [Support](mailto:support@fss-measurement.com)

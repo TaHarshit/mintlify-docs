@@ -1,0 +1,98 @@
+---
+title: Get How It Works
+api: 'POST /api/v1/how-works/get'
+description: Get tutorial/how-it-works content
+---
+
+# Get How It Works
+
+Get tutorial content explaining how the application works.
+
+## Endpoint
+
+```
+POST /api/v1/how-works/get
+```
+
+<Note>This endpoint does not require authentication</Note>
+
+## Headers
+
+| Header | Value | Required |
+|--------|-------|----------|
+| Content-Type | application/json | Yes |
+
+## Request Body
+
+```json
+{}
+```
+
+## Response
+
+<ResponseField name="status" type="string">
+  Success status
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  How it works content
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST http://localhost/fss/public/api/v1/how-works/get \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://localhost/fss/public/api/v1/how-works/get', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "status": "success",
+  "data": {
+    "title": "How FSS Works",
+    "steps": [
+      {
+        "step": 1,
+        "title": "Create Account",
+        "description": "Sign up for a free account"
+      },
+      {
+        "step": 2,
+        "title": "Add Clients",
+        "description": "Add your clients and their information"
+      },
+      {
+        "step": 3,
+        "title": "Take Measurements",
+        "description": "Measure windows and rooms"
+      }
+    ]
+  }
+}
+```
+
+```json Error Response
+{
+  "status": "error",
+  "message": "Failed to fetch content"
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,88 @@
+---
+title: Get Plans
+api: 'GET /api/v1/plans/index'
+description: Get available subscription plans
+---
+
+# Get Plans
+
+Get all available subscription plans.
+
+## Endpoint
+
+```
+GET /api/v1/plans/index
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.YOUR_API_TOKEN | Yes |
+
+## Request Body
+
+None
+
+## Response
+
+<ResponseField name="status" type="string">
+  Success status
+</ResponseField>
+
+<ResponseField name="data" type="array">
+  Array of subscription plans
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X GET http://localhost/fss/public/api/v1/plans/index \
+  -H "X-API-Token: YOUR_API_TOKEN"
+```
+
+```javascript JavaScript
+const response = await fetch('http://localhost/fss/public/api/v1/plans/index', {
+  method: 'GET',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN'
+  }
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "status": "success",
+  "data": [
+    {
+      "id": 1,
+      "name": "Basic",
+      "price": 29.99,
+      "interval": "monthly",
+      "features": ["Feature 1", "Feature 2"]
+    },
+    {
+      "id": 2,
+      "name": "Pro",
+      "price": 49.99,
+      "interval": "monthly",
+      "features": ["Feature 1", "Feature 2", "Feature 3"]
+    }
+  ]
+}
+```
+
+```json Error Response
+{
+  "status": "error",
+  "message": "Unauthorized"
+}
+```
+
+</ResponseExample>

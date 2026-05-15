@@ -1,0 +1,296 @@
+---
+title: Search Client
+api: 'POST /api/v1/client/search'
+description: Search for clients
+---
+
+## Endpoint
+
+```
+POST /api/v1/client/search
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="keyword" type="string">
+  keyword
+</ParamField>
+
+## Response
+
+<ResponseField name="message" type="string">
+  message
+</ResponseField>
+<ResponseField name="data" type="object">
+  data
+  <Expandable title="data">
+    <ResponseField name="current_page" type="integer">
+      current page
+    </ResponseField>
+    <ResponseField name="data" type="array">
+      data
+      <Expandable title="data item">
+        <ResponseField name="id" type="integer">
+          id
+        </ResponseField>
+        <ResponseField name="user_id" type="integer">
+          user id
+        </ResponseField>
+        <ResponseField name="lead_source_id" type="integer">
+          lead source id
+        </ResponseField>
+        <ResponseField name="end_client_known" type="integer">
+          end client known
+        </ResponseField>
+        <ResponseField name="quote_no" type="string">
+          quote no
+        </ResponseField>
+        <ResponseField name="project_name" type="object">
+          project name
+        </ResponseField>
+        <ResponseField name="name" type="string">
+          name
+        </ResponseField>
+        <ResponseField name="surname" type="string">
+          surname
+        </ResponseField>
+        <ResponseField name="email" type="string">
+          email
+        </ResponseField>
+        <ResponseField name="phone_no" type="string">
+          phone no
+        </ResponseField>
+        <ResponseField name="location" type="string">
+          location
+        </ResponseField>
+        <ResponseField name="address" type="string">
+          address
+        </ResponseField>
+        <ResponseField name="state" type="string">
+          state
+        </ResponseField>
+        <ResponseField name="city" type="string">
+          city
+        </ResponseField>
+        <ResponseField name="zip_code" type="string">
+          zip code
+        </ResponseField>
+        <ResponseField name="billing_address" type="string">
+          billing address
+        </ResponseField>
+        <ResponseField name="billing_city" type="string">
+          billing city
+        </ResponseField>
+        <ResponseField name="billing_state" type="string">
+          billing state
+        </ResponseField>
+        <ResponseField name="billing_zip_code" type="string">
+          billing zip code
+        </ResponseField>
+        <ResponseField name="created_at" type="string">
+          created at
+        </ResponseField>
+        <ResponseField name="lead_source_name" type="string">
+          lead source name
+        </ResponseField>
+        <ResponseField name="lead_source_email" type="string">
+          lead source email
+        </ResponseField>      </Expandable>
+    </ResponseField>
+    <ResponseField name="first_page_url" type="string">
+      first page url
+    </ResponseField>
+    <ResponseField name="from" type="integer">
+      from
+    </ResponseField>
+    <ResponseField name="last_page" type="integer">
+      last page
+    </ResponseField>
+    <ResponseField name="last_page_url" type="string">
+      last page url
+    </ResponseField>
+    <ResponseField name="links" type="array">
+      links
+      <Expandable title="links item">
+        <ResponseField name="url" type="object">
+          url
+        </ResponseField>
+        <ResponseField name="label" type="string">
+          label
+        </ResponseField>
+        <ResponseField name="active" type="boolean">
+          active
+        </ResponseField>      </Expandable>
+    </ResponseField>
+    <ResponseField name="next_page_url" type="object">
+      next page url
+    </ResponseField>
+    <ResponseField name="path" type="string">
+      path
+    </ResponseField>
+    <ResponseField name="per_page" type="integer">
+      per page
+    </ResponseField>
+    <ResponseField name="prev_page_url" type="object">
+      prev page url
+    </ResponseField>
+    <ResponseField name="to" type="integer">
+      to
+    </ResponseField>
+    <ResponseField name="total" type="integer">
+      total
+    </ResponseField>  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/client/search' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "keyword": "john"
+}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/client/search', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+  "keyword": "john"
+})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Client get successfully.",
+  "data": {
+    "current_page": 1,
+    "data": [
+      {
+        "id": 1475,
+        "user_id": 68,
+        "lead_source_id": 75,
+        "end_client_known": 1,
+        "quote_no": "",
+        "project_name": null,
+        "name": "Test",
+        "surname": "Convert Wuick Quote",
+        "email": "test@gmail.com",
+        "phone_no": "8460008773",
+        "location": "Quiuuu",
+        "address": "",
+        "state": "",
+        "city": "",
+        "zip_code": "",
+        "billing_address": "",
+        "billing_city": "",
+        "billing_state": "",
+        "billing_zip_code": "",
+        "created_at": "2025-12-16T05:33:32.000000Z",
+        "lead_source_name": "Snv Rtr",
+        "lead_source_email": "ddddnv@gmail.com"
+      },
+      {
+        "id": 1472,
+        "user_id": 68,
+        "lead_source_id": 76,
+        "end_client_known": 0,
+        "quote_no": "",
+        "project_name": "Test2",
+        "name": "Sn",
+        "surname": "Aa",
+        "email": "vjjv@gmail.com",
+        "phone_no": "12345678",
+        "location": "Hccjkv",
+        "address": "",
+        "state": "",
+        "city": "",
+        "zip_code": "",
+        "billing_address": "",
+        "billing_city": "",
+        "billing_state": "",
+        "billing_zip_code": "",
+        "created_at": "2025-12-16T05:18:22.000000Z",
+        "lead_source_name": "Sn Aa",
+        "lead_source_email": "ae@gmail.cm"
+      },
+      {
+        "id": 1471,
+        "user_id": 68,
+        "lead_source_id": null,
+        "end_client_known": 1,
+        "quote_no": "",
+        "project_name": "Test",
+        "name": "QuickQuote",
+        "surname": "QuickQuote",
+        "email": "fss_1765862270@unknown.com",
+        "phone_no": "",
+        "location": "QuickQuoteLocation",
+        "address": "",
+        "state": "",
+        "city": "",
+        "zip_code": "",
+        "billing_address": "",
+        "billing_city": "",
+        "billing_state": "",
+        "billing_zip_code": "",
+        "created_at": "2025-12-16T05:17:51.000000Z",
+        "lead_source_name": null,
+        "lead_source_email": null
+      }
+    ],
+    "first_page_url": "http://localhost/fss/public/api/v1/client/search?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "http://localhost/fss/public/api/v1/client/search?page=1",
+    "links": [
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "active": false
+      },
+      {
+        "url": "http://localhost/fss/public/api/v1/client/search?page=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": null,
+        "label": "Next &raquo;",
+        "active": false
+      }
+    ],
+    "next_page_url": null,
+    "path": "http://localhost/fss/public/api/v1/client/search",
+    "per_page": 20,
+    "prev_page_url": null,
+    "to": 3,
+    "total": 3
+  }
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required
+

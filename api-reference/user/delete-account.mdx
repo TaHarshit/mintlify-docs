@@ -1,0 +1,85 @@
+---
+title: Delete Account
+api: 'POST /api/v1/user/delete_account'
+description: Delete user account
+---
+
+# Delete Account
+
+Permanently delete your account and all associated data.
+
+## Endpoint
+
+```
+POST /api/v1/user/delete_account
+```
+
+<Note>This endpoint requires authentication</Note>
+
+<Callout type="warning">
+This action is irreversible. All your data will be permanently deleted.
+</Callout>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+```json
+{}
+```
+
+## Response
+
+<ResponseField name="status" type="string">
+  Success status
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  Response data
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST http://localhost/fss/public/api/v1/user/delete_account \
+  -H "X-API-Token: YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://localhost/fss/public/api/v1/user/delete_account', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "status": "success",
+  "data": {
+    "message": "Account deleted successfully"
+  }
+}
+```
+
+```json Error Response
+{
+  "status": "error",
+  "message": "Unauthorized"
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,189 @@
+---
+title: 'Add Client'
+api: 'POST /api/v1/client/add'
+description: 'Create a new client record'
+---
+
+## Endpoint
+
+```
+POST /api/v1/client/add
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="name" type="string" required>
+  name
+</ParamField>
+
+<ParamField body="surname" type="string" required>
+  surname
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Must be unique unless location is provided.
+</ParamField>
+
+<ParamField body="location" type="string">
+  Optional client location/project site.
+</ParamField>
+
+<ParamField body="phone" type="string">
+  phone
+</ParamField>
+
+<ParamField body="address" type="string">
+  address
+</ParamField>
+
+<ParamField body="city" type="string">
+  city
+</ParamField>
+
+<ParamField body="state" type="string">
+  state
+</ParamField>
+
+<ParamField body="zip_code" type="string">
+  zip code
+</ParamField>
+
+<ParamField body="billing_address" type="string">
+  billing address
+</ParamField>
+
+<ParamField body="billing_city" type="string">
+  billing city
+</ParamField>
+
+<ParamField body="billing_state" type="string">
+  billing state
+</ParamField>
+
+<ParamField body="billing_zip_code" type="string">
+  billing zip code
+</ParamField>
+
+<ParamField body="phone_no" type="string">
+  phone no
+</ParamField>
+
+<ParamField body="lead_source_name" type="string">
+  lead source name
+</ParamField>
+
+<ParamField body="quote_no" type="string">
+  quote no
+</ParamField>
+
+<ParamField body="lead_source_id" type="integer">
+  lead source id
+</ParamField>
+
+<ParamField body="project_name" type="string">
+  project name
+</ParamField>
+
+<ParamField body="end_client_known" type="boolean">
+  end client known
+</ParamField>
+
+## Response
+
+<ResponseField name="message" type="string">
+  message
+</ResponseField>
+<ResponseField name="data" type="array">
+  data
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/client/add' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "name": "John",
+  "surname": "Doe",
+  "email": "john2@example.com",
+  "location": "Rajkot",
+  "phone": "1234567890",
+  "address": "123 Main St",
+  "city": "Rajkot",
+  "state": "Gujarat",
+  "zip_code": "360006",
+  "billing_address": "123 main St",
+  "billing_city": "Rajkot",
+  "billing_state": "Gujarat",
+  "billing_zip_code": "360006",
+  "phone_no": "7023927561",
+  "lead_source_name": "",
+  "quote_no": "Eeeerer",
+  "lead_source_id": 17,
+  "project_name": "Rajkot",
+  "end_client_known": true
+}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/client/add', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+  "name": "John",
+  "surname": "Doe",
+  "email": "john2@example.com",
+  "location": "Rajkot",
+  "phone": "1234567890",
+  "address": "123 Main St",
+  "city": "Rajkot",
+  "state": "Gujarat",
+  "zip_code": "360006",
+  "billing_address": "123 main St",
+  "billing_city": "Rajkot",
+  "billing_state": "Gujarat",
+  "billing_zip_code": "360006",
+  "phone_no": "7023927561",
+  "lead_source_name": "",
+  "quote_no": "Eeeerer",
+  "lead_source_id": 17,
+  "project_name": "Rajkot",
+  "end_client_known": true
+})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Client added successfully.",
+  "data": []
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Requires active subscription
+- All address fields are optional but recommended for complete records
+- Lead source ID can be obtained from `/lead_source/get` endpoint
+- Quote number should be unique for tracking purposes
+- Billing address defaults to main address if not provided
+
+

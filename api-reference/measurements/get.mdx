@@ -1,0 +1,797 @@
+---
+title: Get Measurements
+api: 'POST /api/v1/measurements/get'
+description: Get measurements for a client
+---
+
+## Endpoint
+
+```
+POST /api/v1/measurements/get
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="client_id" type="integer" required>
+  client id
+</ParamField>
+
+<ParamField body="room_id" type="integer">
+  room id
+</ParamField>
+
+<ParamField body="group_id" type="integer" required>
+  Required to fetch measurements belonging to a specific group.
+</ParamField>
+
+<ParamField body="measurement_type_id" type="integer" required>
+  measurement type id
+</ParamField>
+
+## Response
+
+<ResponseField name="message" type="string">
+  message
+</ResponseField>
+<ResponseField name="data" type="object">
+  data
+  <Expandable title="data">
+    <ResponseField name="measurements" type="array">
+      measurements
+      <Expandable title="measurements item">
+        <ResponseField name="id" type="integer">
+          id
+        </ResponseField>
+        <ResponseField name="user_id" type="integer">
+          user id
+        </ResponseField>
+        <ResponseField name="client_id" type="integer">
+          client id
+        </ResponseField>
+        <ResponseField name="room_id" type="integer">
+          room id
+        </ResponseField>
+        <ResponseField name="group_id" type="integer">
+          group id
+        </ResponseField>
+        <ResponseField name="measurement_type_id" type="integer">
+          measurement type id
+        </ResponseField>
+        <ResponseField name="unit_type" type="integer">
+          unit type
+        </ResponseField>
+        <ResponseField name="mount_type" type="string">
+          mount type
+        </ResponseField>
+        <ResponseField name="window_type" type="object">
+          window type
+        </ResponseField>
+        <ResponseField name="window_name" type="string">
+          window name
+        </ResponseField>
+        <ResponseField name="model" type="object">
+          model
+        </ResponseField>
+        <ResponseField name="brand_name" type="object">
+          brand name
+        </ResponseField>
+        <ResponseField name="refrance_image" type="object">
+          refrance image
+        </ResponseField>
+        <ResponseField name="w_top" type="string">
+          w top
+        </ResponseField>
+        <ResponseField name="w_middle" type="string">
+          w middle
+        </ResponseField>
+        <ResponseField name="w_bottom" type="string">
+          w bottom
+        </ResponseField>
+        <ResponseField name="h_left" type="string">
+          h left
+        </ResponseField>
+        <ResponseField name="h_middle" type="string">
+          h middle
+        </ResponseField>
+        <ResponseField name="h_right" type="string">
+          h right
+        </ResponseField>
+        <ResponseField name="d_sill" type="string">
+          d sill
+        </ResponseField>
+        <ResponseField name="t_floor_window_to_floor" type="object">
+          t floor window to floor
+        </ResponseField>
+        <ResponseField name="window_to_wall_obs_left" type="object">
+          window to wall obs left
+        </ResponseField>
+        <ResponseField name="window_to_wall_obs_right" type="object">
+          window to wall obs right
+        </ResponseField>
+        <ResponseField name="window_to_floor_obs" type="object">
+          window to floor obs
+        </ResponseField>
+        <ResponseField name="outside_h" type="object">
+          outside h
+        </ResponseField>
+        <ResponseField name="outside_w" type="object">
+          outside w
+        </ResponseField>
+        <ResponseField name="curtain_rod_to_window" type="object">
+          curtain rod to window
+        </ResponseField>
+        <ResponseField name="window_to_obs" type="object">
+          window to obs
+        </ResponseField>
+        <ResponseField name="curtain_rod_len" type="object">
+          curtain rod len
+        </ResponseField>
+        <ResponseField name="window_to_ceiling" type="object">
+          window to ceiling
+        </ResponseField>
+        <ResponseField name="left_edge_w" type="string">
+          left edge w
+        </ResponseField>
+        <ResponseField name="right_edge_w" type="string">
+          right edge w
+        </ResponseField>
+        <ResponseField name="top_edge_to_ceiling_h" type="string">
+          top edge to ceiling h
+        </ResponseField>
+        <ResponseField name="bottom_edge_to_floor_h" type="string">
+          bottom edge to floor h
+        </ResponseField>
+        <ResponseField name="middle_a_w" type="string">
+          middle a w
+        </ResponseField>
+        <ResponseField name="middle_b_w" type="string">
+          middle b w
+        </ResponseField>
+        <ResponseField name="middle_c_w" type="string">
+          middle c w
+        </ResponseField>
+        <ResponseField name="middle_d_w" type="object">
+          middle d w
+        </ResponseField>
+        <ResponseField name="wall_to_wall_w" type="string">
+          wall to wall w
+        </ResponseField>
+        <ResponseField name="floor_to_ceiling_h" type="string">
+          floor to ceiling h
+        </ResponseField>
+        <ResponseField name="a" type="object">
+          a
+        </ResponseField>
+        <ResponseField name="b" type="object">
+          b
+        </ResponseField>
+        <ResponseField name="c" type="object">
+          c
+        </ResponseField>
+        <ResponseField name="d" type="object">
+          d
+        </ResponseField>
+        <ResponseField name="e" type="object">
+          e
+        </ResponseField>
+        <ResponseField name="f" type="object">
+          f
+        </ResponseField>
+        <ResponseField name="g" type="object">
+          g
+        </ResponseField>
+        <ResponseField name="h" type="object">
+          h
+        </ResponseField>
+        <ResponseField name="i" type="object">
+          i
+        </ResponseField>
+        <ResponseField name="j" type="object">
+          j
+        </ResponseField>
+        <ResponseField name="k" type="object">
+          k
+        </ResponseField>
+        <ResponseField name="l" type="object">
+          l
+        </ResponseField>
+        <ResponseField name="w" type="object">
+          w
+        </ResponseField>
+        <ResponseField name="r" type="object">
+          r
+        </ResponseField>
+        <ResponseField name="w1" type="object">
+          w1
+        </ResponseField>
+        <ResponseField name="h1" type="object">
+          h1
+        </ResponseField>
+        <ResponseField name="d1" type="object">
+          d1
+        </ResponseField>
+        <ResponseField name="x1" type="object">
+          x1
+        </ResponseField>
+        <ResponseField name="b1" type="object">
+          b1
+        </ResponseField>
+        <ResponseField name="w2" type="object">
+          w2
+        </ResponseField>
+        <ResponseField name="h2" type="object">
+          h2
+        </ResponseField>
+        <ResponseField name="d2" type="object">
+          d2
+        </ResponseField>
+        <ResponseField name="x2" type="object">
+          x2
+        </ResponseField>
+        <ResponseField name="b2" type="object">
+          b2
+        </ResponseField>
+        <ResponseField name="floor_to_ceiling" type="object">
+          floor to ceiling
+        </ResponseField>
+        <ResponseField name="bottom_trim_to_floor" type="string">
+          bottom trim to floor
+        </ResponseField>
+        <ResponseField name="floor_to_trim" type="object">
+          floor to trim
+        </ResponseField>
+        <ResponseField name="floor_to_sill" type="object">
+          floor to sill
+        </ResponseField>
+        <ResponseField name="wall_to_wall" type="object">
+          wall to wall
+        </ResponseField>
+        <ResponseField name="left_wall_to_window" type="object">
+          left wall to window
+        </ResponseField>
+        <ResponseField name="left_wall_to_trim" type="object">
+          left wall to trim
+        </ResponseField>
+        <ResponseField name="middle_a-b_width" type="object">
+          middle a-b width
+        </ResponseField>
+        <ResponseField name="middle_a-b_trim_to_trim" type="object">
+          middle a-b trim to trim
+        </ResponseField>
+        <ResponseField name="window_a_to_break" type="object">
+          window a to break
+        </ResponseField>
+        <ResponseField name="window_b_to_break" type="object">
+          window b to break
+        </ResponseField>
+        <ResponseField name="top_trim_to_obstruction" type="object">
+          top trim to obstruction
+        </ResponseField>
+        <ResponseField name="top_trim_to_curtain_rod" type="object">
+          top trim to curtain rod
+        </ResponseField>
+        <ResponseField name="top_trim_to_molding" type="object">
+          top trim to molding
+        </ResponseField>
+        <ResponseField name="top_trim_to_ceiling" type="object">
+          top trim to ceiling
+        </ResponseField>
+        <ResponseField name="middle_b-c_trim_to_trim" type="object">
+          middle b-c trim to trim
+        </ResponseField>
+        <ResponseField name="middle_b-c_width" type="object">
+          middle b-c width
+        </ResponseField>
+        <ResponseField name="middle_c-d_trim_to_trim" type="object">
+          middle c-d trim to trim
+        </ResponseField>
+        <ResponseField name="middle_c-d_width" type="object">
+          middle c-d width
+        </ResponseField>
+        <ResponseField name="middle_d-e_width" type="object">
+          middle d-e width
+        </ResponseField>
+        <ResponseField name="middle_d-e_trim_to_trim" type="object">
+          middle d-e trim to trim
+        </ResponseField>
+        <ResponseField name="window_e_to_break" type="object">
+          window e to break
+        </ResponseField>
+        <ResponseField name="window_d_to_break" type="object">
+          window d to break
+        </ResponseField>
+        <ResponseField name="window_a-e_outside_width" type="object">
+          window a-e outside width
+        </ResponseField>
+        <ResponseField name="window_a-e_outside_height" type="object">
+          window a-e outside height
+        </ResponseField>
+        <ResponseField name="right_wall_to_window" type="object">
+          right wall to window
+        </ResponseField>
+        <ResponseField name="right_wall_to_trim" type="object">
+          right wall to trim
+        </ResponseField>
+        <ResponseField name="curtain_rod_length" type="object">
+          curtain rod length
+        </ResponseField>
+        <ResponseField name="window_a_c_outside_width" type="object">
+          window a c outside width
+        </ResponseField>
+        <ResponseField name="window_a_c_outside_height" type="object">
+          window a c outside height
+        </ResponseField>
+        <ResponseField name="window_a-d_outside_width" type="object">
+          window a-d outside width
+        </ResponseField>
+        <ResponseField name="window_a-d_outside_height" type="object">
+          window a-d outside height
+        </ResponseField>
+        <ResponseField name="window_outside_width" type="object">
+          window outside width
+        </ResponseField>
+        <ResponseField name="window_outside_height" type="object">
+          window outside height
+        </ResponseField>
+        <ResponseField name="window_a_w_top" type="object">
+          window a w top
+        </ResponseField>
+        <ResponseField name="window_a_w_middle" type="object">
+          window a w middle
+        </ResponseField>
+        <ResponseField name="window_a_w_bottom" type="object">
+          window a w bottom
+        </ResponseField>
+        <ResponseField name="window_a_h_left" type="object">
+          window a h left
+        </ResponseField>
+        <ResponseField name="window_a_h_middle" type="object">
+          window a h middle
+        </ResponseField>
+        <ResponseField name="window_a_h_right" type="object">
+          window a h right
+        </ResponseField>
+        <ResponseField name="window_a_sill_depth" type="object">
+          window a sill depth
+        </ResponseField>
+        <ResponseField name="window_b_w_top" type="object">
+          window b w top
+        </ResponseField>
+        <ResponseField name="window_b_w_middle" type="object">
+          window b w middle
+        </ResponseField>
+        <ResponseField name="window_b_w_bottom" type="object">
+          window b w bottom
+        </ResponseField>
+        <ResponseField name="window_b_h_left" type="object">
+          window b h left
+        </ResponseField>
+        <ResponseField name="window_b_h_middle" type="object">
+          window b h middle
+        </ResponseField>
+        <ResponseField name="window_b_h_right" type="object">
+          window b h right
+        </ResponseField>
+        <ResponseField name="window_b_sill_depth" type="object">
+          window b sill depth
+        </ResponseField>
+        <ResponseField name="window_c_w_top" type="object">
+          window c w top
+        </ResponseField>
+        <ResponseField name="window_c_w_middle" type="object">
+          window c w middle
+        </ResponseField>
+        <ResponseField name="window_c_w_bottom" type="object">
+          window c w bottom
+        </ResponseField>
+        <ResponseField name="window_c_h_left" type="object">
+          window c h left
+        </ResponseField>
+        <ResponseField name="window_c_h_middle" type="object">
+          window c h middle
+        </ResponseField>
+        <ResponseField name="window_c_h_right" type="object">
+          window c h right
+        </ResponseField>
+        <ResponseField name="window_c_sill_depth" type="object">
+          window c sill depth
+        </ResponseField>
+        <ResponseField name="window_d_w_top" type="object">
+          window d w top
+        </ResponseField>
+        <ResponseField name="window_d_w_middle" type="object">
+          window d w middle
+        </ResponseField>
+        <ResponseField name="window_d_w_bottom" type="object">
+          window d w bottom
+        </ResponseField>
+        <ResponseField name="window_d_h_left" type="object">
+          window d h left
+        </ResponseField>
+        <ResponseField name="window_d_h_middle" type="object">
+          window d h middle
+        </ResponseField>
+        <ResponseField name="window_d_h_right" type="object">
+          window d h right
+        </ResponseField>
+        <ResponseField name="window_d_sill_depth" type="object">
+          window d sill depth
+        </ResponseField>
+        <ResponseField name="window_e_w_top" type="object">
+          window e w top
+        </ResponseField>
+        <ResponseField name="window_e_w_middle" type="object">
+          window e w middle
+        </ResponseField>
+        <ResponseField name="window_e_w_bottom" type="object">
+          window e w bottom
+        </ResponseField>
+        <ResponseField name="window_e_h_left" type="object">
+          window e h left
+        </ResponseField>
+        <ResponseField name="window_e_h_middle" type="object">
+          window e h middle
+        </ResponseField>
+        <ResponseField name="window_e_h_right" type="object">
+          window e h right
+        </ResponseField>
+        <ResponseField name="window_e_sill_depth" type="object">
+          window e sill depth
+        </ResponseField>
+        <ResponseField name="window_a_b_outside_width" type="object">
+          window a b outside width
+        </ResponseField>
+        <ResponseField name="window_a_b_outside_height" type="object">
+          window a b outside height
+        </ResponseField>
+        <ResponseField name="focus_width" type="object">
+          focus width
+        </ResponseField>
+        <ResponseField name="focus_height" type="object">
+          focus height
+        </ResponseField>
+        <ResponseField name="focus_width_key" type="object">
+          focus width key
+        </ResponseField>
+        <ResponseField name="focus_height_key" type="object">
+          focus height key
+        </ResponseField>
+        <ResponseField name="curtain_rod_to_floor" type="object">
+          curtain rod to floor
+        </ResponseField>
+        <ResponseField name="trim_width" type="object">
+          trim width
+        </ResponseField>
+        <ResponseField name="number_in_series" type="object">
+          number in series
+        </ResponseField>
+        <ResponseField name="for_shutter" type="string">
+          for shutter
+        </ResponseField>
+        <ResponseField name="square_feet" type="string">
+          square feet
+        </ResponseField>
+        <ResponseField name="square_feet2" type="object">
+          square feet2
+        </ResponseField>
+        <ResponseField name="square_feet3" type="object">
+          square feet3
+        </ResponseField>
+        <ResponseField name="square_feet4" type="object">
+          square feet4
+        </ResponseField>
+        <ResponseField name="square_feet5" type="object">
+          square feet5
+        </ResponseField>
+        <ResponseField name="custom_field" type="array">
+          custom field
+        </ResponseField>
+        <ResponseField name="min_value_fields" type="object">
+          min value fields
+          <Expandable title="min_value_fields">
+          </Expandable>
+        </ResponseField>
+        <ResponseField name="height" type="object">
+          height
+        </ResponseField>
+        <ResponseField name="angle" type="object">
+          angle
+        </ResponseField>
+        <ResponseField name="valance_height" type="object">
+          valance height
+        </ResponseField>
+        <ResponseField name="headroom" type="object">
+          headroom
+        </ResponseField>
+        <ResponseField name="coverage_depth" type="object">
+          coverage depth
+        </ResponseField>
+        <ResponseField name="opening_clearance" type="object">
+          opening clearance
+        </ResponseField>
+        <ResponseField name="width_cassette" type="object">
+          width cassette
+        </ResponseField>
+        <ResponseField name="left_clearance" type="object">
+          left clearance
+        </ResponseField>
+        <ResponseField name="right_clearance" type="object">
+          right clearance
+        </ResponseField>
+        <ResponseField name="awning_config" type="object">
+          awning config
+        </ResponseField>
+        <ResponseField name="standoff_bracket" type="object">
+          standoff bracket
+        </ResponseField>
+        <ResponseField name="projection_lenth" type="object">
+          projection lenth
+        </ResponseField>
+        <ResponseField name="bracket_data" type="object">
+          bracket data
+        </ResponseField>
+        <ResponseField name="note" type="string">
+          note
+        </ResponseField>
+        <ResponseField name="installation_instructions" type="string">
+          installation instructions
+        </ResponseField>
+        <ResponseField name="measurement_unique_id" type="object">
+          measurement unique id
+        </ResponseField>
+        <ResponseField name="offset_value" type="object">
+          offset value
+        </ResponseField>
+        <ResponseField name="offset_value_keys" type="object">
+          offset value keys
+        </ResponseField>
+        <ResponseField name="status" type="integer">
+          status
+        </ResponseField>
+        <ResponseField name="created_at" type="string">
+          created at
+        </ResponseField>
+        <ResponseField name="created_by" type="integer">
+          created by
+        </ResponseField>
+        <ResponseField name="updated_by" type="integer">
+          updated by
+        </ResponseField>
+        <ResponseField name="images" type="array">
+          images
+        </ResponseField>      </Expandable>
+    </ResponseField>  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/measurements/get' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "client_id": 1856,
+  "room_id": 4945,
+  "group_id": 11157,
+  "measurement_type_id": 1
+}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/measurements/get', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+  "client_id": 1856,
+  "room_id": 4945,
+  "group_id": 11157,
+  "measurement_type_id": 1
+})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Measurement details get successfully!",
+  "data": {
+    "measurements": [
+      {
+        "id": 12170,
+        "user_id": 68,
+        "client_id": 1856,
+        "room_id": 4945,
+        "group_id": 11157,
+        "measurement_type_id": 1,
+        "unit_type": 0,
+        "mount_type": "",
+        "window_type": null,
+        "window_name": "test",
+        "model": null,
+        "brand_name": null,
+        "refrance_image": null,
+        "w_top": "0.000",
+        "w_middle": "0.000",
+        "w_bottom": "0.000",
+        "h_left": "0.000",
+        "h_middle": "0.000",
+        "h_right": "0.000",
+        "d_sill": "0.000",
+        "t_floor_window_to_floor": null,
+        "window_to_wall_obs_left": null,
+        "window_to_wall_obs_right": null,
+        "window_to_floor_obs": null,
+        "outside_h": null,
+        "outside_w": null,
+        "curtain_rod_to_window": null,
+        "window_to_obs": null,
+        "curtain_rod_len": null,
+        "window_to_ceiling": null,
+        "left_edge_w": "0.000",
+        "right_edge_w": "0.000",
+        "top_edge_to_ceiling_h": "0.000",
+        "bottom_edge_to_floor_h": "0.000",
+        "middle_a_w": "0.000",
+        "middle_b_w": "0.000",
+        "middle_c_w": "0.000",
+        "middle_d_w": null,
+        "wall_to_wall_w": "0.000",
+        "floor_to_ceiling_h": "0.000",
+        "a": null,
+        "b": null,
+        "c": null,
+        "d": null,
+        "e": null,
+        "f": null,
+        "g": null,
+        "h": null,
+        "i": null,
+        "j": null,
+        "k": null,
+        "l": null,
+        "w": null,
+        "r": null,
+        "w1": null,
+        "h1": null,
+        "d1": null,
+        "x1": null,
+        "b1": null,
+        "w2": null,
+        "h2": null,
+        "d2": null,
+        "x2": null,
+        "b2": null,
+        "floor_to_ceiling": null,
+        "bottom_trim_to_floor": "0.000",
+        "floor_to_trim": null,
+        "floor_to_sill": null,
+        "wall_to_wall": null,
+        "left_wall_to_window": null,
+        "left_wall_to_trim": null,
+        "middle_a-b_width": null,
+        "middle_a-b_trim_to_trim": null,
+        "window_a_to_break": null,
+        "window_b_to_break": null,
+        "top_trim_to_obstruction": null,
+        "top_trim_to_curtain_rod": null,
+        "top_trim_to_molding": null,
+        "top_trim_to_ceiling": null,
+        "middle_b-c_trim_to_trim": null,
+        "middle_b-c_width": null,
+        "middle_c-d_trim_to_trim": null,
+        "middle_c-d_width": null,
+        "middle_d-e_width": null,
+        "middle_d-e_trim_to_trim": null,
+        "window_e_to_break": null,
+        "window_d_to_break": null,
+        "window_a-e_outside_width": null,
+        "window_a-e_outside_height": null,
+        "right_wall_to_window": null,
+        "right_wall_to_trim": null,
+        "curtain_rod_length": null,
+        "window_a_c_outside_width": null,
+        "window_a_c_outside_height": null,
+        "window_a-d_outside_width": null,
+        "window_a-d_outside_height": null,
+        "window_outside_width": null,
+        "window_outside_height": null,
+        "window_a_w_top": null,
+        "window_a_w_middle": null,
+        "window_a_w_bottom": null,
+        "window_a_h_left": null,
+        "window_a_h_middle": null,
+        "window_a_h_right": null,
+        "window_a_sill_depth": null,
+        "window_b_w_top": null,
+        "window_b_w_middle": null,
+        "window_b_w_bottom": null,
+        "window_b_h_left": null,
+        "window_b_h_middle": null,
+        "window_b_h_right": null,
+        "window_b_sill_depth": null,
+        "window_c_w_top": null,
+        "window_c_w_middle": null,
+        "window_c_w_bottom": null,
+        "window_c_h_left": null,
+        "window_c_h_middle": null,
+        "window_c_h_right": null,
+        "window_c_sill_depth": null,
+        "window_d_w_top": null,
+        "window_d_w_middle": null,
+        "window_d_w_bottom": null,
+        "window_d_h_left": null,
+        "window_d_h_middle": null,
+        "window_d_h_right": null,
+        "window_d_sill_depth": null,
+        "window_e_w_top": null,
+        "window_e_w_middle": null,
+        "window_e_w_bottom": null,
+        "window_e_h_left": null,
+        "window_e_h_middle": null,
+        "window_e_h_right": null,
+        "window_e_sill_depth": null,
+        "window_a_b_outside_width": null,
+        "window_a_b_outside_height": null,
+        "focus_width": null,
+        "focus_height": null,
+        "focus_width_key": null,
+        "focus_height_key": null,
+        "curtain_rod_to_floor": null,
+        "trim_width": null,
+        "number_in_series": null,
+        "for_shutter": "",
+        "square_feet": "",
+        "square_feet2": null,
+        "square_feet3": null,
+        "square_feet4": null,
+        "square_feet5": null,
+        "custom_field": [],
+        "min_value_fields": {},
+        "height": null,
+        "angle": null,
+        "valance_height": null,
+        "headroom": null,
+        "coverage_depth": null,
+        "opening_clearance": null,
+        "width_cassette": null,
+        "left_clearance": null,
+        "right_clearance": null,
+        "awning_config": null,
+        "standoff_bracket": null,
+        "projection_lenth": null,
+        "bracket_data": null,
+        "note": "",
+        "installation_instructions": "",
+        "measurement_unique_id": null,
+        "offset_value": null,
+        "offset_value_keys": null,
+        "status": 1,
+        "created_at": "2026-05-14T12:01:04.000000Z",
+        "created_by": 0,
+        "updated_by": 0,
+        "images": []
+      }
+    ]
+  }
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required

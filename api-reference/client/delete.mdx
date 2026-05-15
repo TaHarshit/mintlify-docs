@@ -1,0 +1,76 @@
+---
+title: Delete Client
+api: 'POST /api/v1/client/delete'
+description: Delete a client
+---
+
+## Endpoint
+
+```
+POST /api/v1/client/delete
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="client_id" type="integer">
+  client id
+</ParamField>
+
+## Response
+
+<ResponseField name="message" type="string">
+  message
+</ResponseField>
+<ResponseField name="data" type="array">
+  data
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/client/delete' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "client_id": 1
+}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/client/delete', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+  "client_id": 1
+})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Client deleted successfully.",
+  "data": []
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required
+

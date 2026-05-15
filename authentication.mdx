@@ -1,0 +1,337 @@
+---
+title: 'Authentication'
+description: 'Learn how to authenticate with the FSS Measurement API'
+---
+
+## Overview
+
+The FSS Measurement API uses a combination of API keys and Bearer tokens for authentication. All API requests must include proper authentication headers.
+
+## Required Headers
+
+Every API request must include the following headers:
+
+| Header | Value | Description |
+|--------|-------|-------------|
+| `platform` | `WEB`, `IOS`, or `ANDROID` | Platform identifier |
+| `api-key` | `FSS2023` | Static API key for basic authentication |
+| `Content-Type` | `application/json` | Content type for request body |
+| `Accept` | `application/json` | Expected response format |
+| `Authorization` | `Bearer {token}` | User authentication token (for protected routes) |
+
+## Authentication Flow
+
+<Steps>
+  <Step title="Public Endpoints">
+    Some endpoints like signup, signin, and forgot password don't require a Bearer token:
+    
+    ```bash
+    curl --location 'http://fssportal.com/api/v1/user/signup' \
+    --header 'platform: WEB' \
+    --header 'api-key: FSS2023' \
+    --header 'Content-Type: application/json'
+    ```
+  </Step>
+  
+  <Step title="Get Authentication Token">
+    Sign in to receive your Bearer token:
+    
+    ```bash
+    curl --location 'http://fssportal.com/api/v1/user/signin' \
+    --header 'platform: WEB' \
+    --header 'api-key: FSS2023' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "email": "user@example.com",
+        "password": "password123",
+        "device_token": "",
+        "platform": "WEB"
+    }'
+    ```
+    
+    Response:
+    ```json
+    {
+      "message": "Login successful",
+      "data": {
+        "api_token": "abc123def456...",
+        "user": { ... }
+      }
+    }
+    ```
+  </Step>
+  
+  <Step title="Use Bearer Token">
+    Include the token in protected endpoint requests:
+    
+    ```bash
+    curl --location 'http://fssportal.com/api/v1/user/get_profile' \
+    --header 'platform: WEB' \
+    --header 'api-key: FSS2023' \
+    --header 'Authorization: Bearer abc123def456...' \
+    --header 'Content-Type: application/json'
+    ```
+  </Step>
+</Steps>
+
+## Token Management
+
+<AccordionGroup>
+  <Accordion title="Token Expiration">
+    API tokens do not expire automatically but can be invalidated when:
+    - User changes password
+    - User logs out
+    - Account is deactivated
+    - Security breach is detected
+  </Accordion>
+  
+  <Accordion title="Token Storage">
+    **Best Practices:**
+    - Store tokens securely in environment variables
+    - Never commit tokens to version control
+    - Use secure storage mechanisms (keychain, secure storage)
+    - Implement token refresh logic in your application
+  </Accordion>
+  
+  <Accordion title="Multiple Devices">
+    Users can be authenticated on multiple devices simultaneously. Each device can have its own device token for push notifications.
+  </Accordion>
+</AccordionGroup>
+
+## Middleware & Permissions
+
+The API uses Laravel middleware for authentication and authorization:
+
+### Public Routes
+No authentication required:
+- `/user/signup`
+- `/user/signin`
+- `/user/qrcode_signin`
+- `/user/forgot_password`
+- `/user/reset_password/{token}`
+- `/user/update_password`
+- `/user/settings`
+- `/countries/index`
+- `/how-works/get`
+
+### Protected Routes
+Requires `Authorization: Bearer {token}`:
+- All client management endpoints
+- All room management endpoints
+- All measurement endpoints
+- User profile endpoints
+- Subscription endpoints
+
+### Subscription Required
+Requires active subscription:
+- Most endpoints require an active subscription plan
+- Check subscription status via `/transactions/get_user_current_plan`
+
+## Error Responses
+
+### 401 Unauthorized
+```json
+{
+  "message": "Unauthenticated.",
+  "status": 401
+}
+```
+
+### 403 Forbidden
+```json
+{
+  "message": "Subscription required.",
+  "status": 403
+}
+```
+
+### 429 Too Many Requests
+```json
+{
+  "message": "Too many requests. Please try again later.",
+  "status": 429
+}
+```
+
+## Security Best Practices
+
+<CardGroup cols={2}>
+  <Card title="HTTPS Only" icon="lock">
+    Always use HTTPS for API requests to ensure data encryption in transit
+  </Card>
+  <Card title="Secure Storage" icon="shield">
+    Store API tokens in secure, encrypted storage mechanisms
+  </Card>
+  <Card title="Token Rotation" icon="rotate">
+    Implement token refresh logic and handle expired tokens gracefully
+  </Card>
+  <Card title="Rate Limiting" icon="gauge">
+    Respect rate limits (60 requests/minute) to avoid throttling
+  </Card>
+</CardGroup>
+
+## Code Examples
+
+<CodeGroup>
+
+```javascript JavaScript
+class FSSClient {
+  constructor(apiKey) {
+    this.baseURL = 'http://fssportal.com/api/v1';
+    this.apiKey = apiKey;
+    this.token = null;
+  }
+
+  async signIn(email, password) {
+    const response = await fetch(`${this.baseURL}/user/signin`, {
+      method: 'POST',
+      headers: {
+        'platform': 'WEB',
+        'api-key': this.apiKey,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+        password,
+        device_token: '',
+        platform: 'WEB'
+      })
+    });
+
+    const data = await response.json();
+    this.token = data.data.api_token;
+    return this.token;
+  }
+
+  async makeAuthenticatedRequest(endpoint, method = 'POST', body = null) {
+    const headers = {
+      'platform': 'WEB',
+      'api-key': this.apiKey,
+      'Authorization': `Bearer ${this.token}`,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    };
+
+    const options = { method, headers };
+    if (body) options.body = JSON.stringify(body);
+
+    const response = await fetch(`${this.baseURL}${endpoint}`, options);
+    return response.json();
+  }
+}
+```
+
+```python Python
+import requests
+
+class FSSClient:
+    def __init__(self, api_key):
+        self.base_url = 'http://fssportal.com/api/v1'
+        self.api_key = api_key
+        self.token = None
+
+    def sign_in(self, email, password):
+        response = requests.post(
+            f'{self.base_url}/user/signin',
+            headers={
+                'platform': 'WEB',
+                'api-key': self.api_key,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            json={
+                'email': email,
+                'password': password,
+                'device_token': '',
+                'platform': 'WEB'
+            }
+        )
+        
+        data = response.json()
+        self.token = data['data']['api_token']
+        return self.token
+
+    def make_authenticated_request(self, endpoint, method='POST', body=None):
+        headers = {
+            'platform': 'WEB',
+            'api-key': self.api_key,
+            'Authorization': f'Bearer {self.token}',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+
+        response = requests.request(
+            method,
+            f'{self.base_url}{endpoint}',
+            headers=headers,
+            json=body
+        )
+        
+        return response.json()
+```
+
+```php PHP
+<?php
+
+class FSSClient {
+    private $baseURL = 'http://fssportal.com/api/v1';
+    private $apiKey;
+    private $token;
+
+    public function __construct($apiKey) {
+        $this->apiKey = $apiKey;
+    }
+
+    public function signIn($email, $password) {
+        $ch = curl_init($this->baseURL . '/user/signin');
+        
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'platform: WEB',
+            'api-key: ' . $this->apiKey,
+            'Content-Type: application/json',
+            'Accept: application/json'
+        ]);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
+            'email' => $email,
+            'password' => $password,
+            'device_token' => '',
+            'platform' => 'WEB'
+        ]));
+        
+        $response = curl_exec($ch);
+        curl_close($ch);
+        
+        $data = json_decode($response, true);
+        $this->token = $data['data']['api_token'];
+        return $this->token;
+    }
+
+    public function makeAuthenticatedRequest($endpoint, $method = 'POST', $body = null) {
+        $ch = curl_init($this->baseURL . $endpoint);
+        
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'platform: WEB',
+            'api-key: ' . $this->apiKey,
+            'Authorization: Bearer ' . $this->token,
+            'Content-Type: application/json',
+            'Accept: application/json'
+        ]);
+        
+        if ($body) {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
+        }
+        
+        $response = curl_exec($ch);
+        curl_close($ch);
+        
+        return json_decode($response, true);
+    }
+}
+```
+
+</CodeGroup>

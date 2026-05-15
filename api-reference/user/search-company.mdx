@@ -1,0 +1,89 @@
+---
+title: Search Company
+api: 'POST /api/v1/user/search_company'
+description: Search for a company
+---
+
+# Search Company
+
+Search for a company by name.
+
+## Endpoint
+
+```
+POST /api/v1/user/search_company
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="company_name" type="string">
+  Company name to search
+</ParamField>
+
+## Response
+
+<ResponseField name="status" type="string">
+  Success status
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  Response data
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST http://localhost/fss/public/api/v1/user/search_company \
+  -H "X-API-Token: YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "company_name": "My Company"
+  }'
+```
+
+```javascript JavaScript
+const response = await fetch('http://localhost/fss/public/api/v1/user/search_company', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    company_name: 'My Company'
+  })
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "status": "success",
+  "data": {
+    "company": {
+      "id": 1,
+      "name": "My Company",
+      "domain": "mycompany.com"
+    }
+  }
+}
+```
+
+```json Error Response
+{
+  "status": "error",
+  "message": "Company not found"
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,85 @@
+---
+title: Change Fields Order
+api: 'POST /api/v1/user/change_fields_order'
+description: Update custom fields order
+---
+
+# Change Fields Order
+
+Update the order of custom fields in your account.
+
+## Endpoint
+
+```
+POST /api/v1/user/change_fields_order
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="fields" type="array">
+  Array of field names in desired order
+</ParamField>
+
+## Response
+
+<ResponseField name="status" type="string">
+  Success status
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  Response data
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST http://localhost/fss/public/api/v1/user/change_fields_order \
+  -H "X-API-Token: YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "fields": ["field1", "field2", "field3"]
+  }'
+```
+
+```javascript JavaScript
+const response = await fetch('http://localhost/fss/public/api/v1/user/change_fields_order', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    fields: ['field1', 'field2', 'field3']
+  })
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "status": "success",
+  "data": {
+    "message": "Fields order updated successfully"
+  }
+}
+```
+
+```json Error Response
+{
+  "status": "error",
+  "message": "Validation failed"
+}
+```
+
+</ResponseExample>

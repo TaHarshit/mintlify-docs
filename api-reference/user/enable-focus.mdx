@@ -1,0 +1,86 @@
+---
+title: Enable Focus Mode
+api: 'POST /api/v1/user/enable_focus'
+description: Toggle focus mode
+---
+
+# Enable Focus Mode
+
+Enable or disable focus mode for your account.
+
+## Endpoint
+
+```
+POST /api/v1/user/enable_focus
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="focus_enabled" type="boolean">
+  Enable or disable focus mode
+</ParamField>
+
+## Response
+
+<ResponseField name="status" type="string">
+  Success status
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  Response data
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST http://localhost/fss/public/api/v1/user/enable_focus \
+  -H "X-API-Token: YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "focus_enabled": true
+  }'
+```
+
+```javascript JavaScript
+const response = await fetch('http://localhost/fss/public/api/v1/user/enable_focus', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    focus_enabled: true
+  })
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "status": "success",
+  "data": {
+    "message": "Focus mode updated successfully",
+    "focus_enabled": true
+  }
+}
+```
+
+```json Error Response
+{
+  "status": "error",
+  "message": "Validation failed"
+}
+```
+
+</ResponseExample>

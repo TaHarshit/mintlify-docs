@@ -1,0 +1,120 @@
+---
+title: Multiple Window Measurement
+api: 'POST /api/v1/measurements/multiple_window_add_edit'
+description: Add/edit multiple window measurements
+---
+
+# Multiple Window Measurement
+
+Add or update multiple window measurements at once.
+
+## Endpoint
+
+```
+POST /api/v1/measurements/multiple_window_add_edit
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="client_id" type="integer" required>
+  Client ID
+</ParamField>
+
+<ParamField body="room_id" type="integer" required>
+  Room ID
+</ParamField>
+
+<ParamField body="windows" type="array">
+  Array of window measurements
+</ParamField>
+
+## Response
+
+<ResponseField name="status" type="string">
+  Success status
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  Response data
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST http://localhost/fss/public/api/v1/measurements/multiple_window_add_edit \
+  -H "X-API-Token: YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "client_id": 456,
+    "room_id": 123,
+    "windows": [
+      {
+        "width": 36,
+        "height": 48,
+        "quantity": 2
+      },
+      {
+        "width": 24,
+        "height": 36,
+        "quantity": 3
+      }
+    ]
+  }'
+```
+
+```javascript JavaScript
+const response = await fetch('http://localhost/fss/public/api/v1/measurements/multiple_window_add_edit', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    client_id: 456,
+    room_id: 123,
+    windows: [
+      {
+        width: 36,
+        height: 48,
+        quantity: 2
+      },
+      {
+        width: 24,
+        height: 36,
+        quantity: 3
+      }
+    ]
+  })
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "status": "success",
+  "data": {
+    "measurement_id": 791,
+    "windows_added": 5
+  }
+}
+```
+
+```json Error Response
+{
+  "status": "error",
+  "message": "Validation failed"
+}
+```
+
+</ResponseExample>

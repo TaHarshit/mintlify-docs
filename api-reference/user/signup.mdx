@@ -1,0 +1,256 @@
+---
+title: 'Sign Up'
+api: 'POST /api/v1/user/signup'
+description: 'Create a new user account'
+---
+
+## Endpoint
+
+```
+POST /api/v1/user/signup
+```
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+<ParamField header="platform" type="string" required>
+  WEB, IOS, or ANDROID
+</ParamField>
+
+## Request Body
+
+<ParamField body="name" type="string" required>
+  User's full name
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Must be a unique and valid email address.
+</ParamField>
+
+<ParamField body="phone_no" type="string" required>
+  User's phone number
+</ParamField>
+
+<ParamField body="password" type="string" required>
+  User's password (minimum 8 characters)
+</ParamField>
+
+<ParamField body="country_code" type="string" required>
+  Country code for phone number (e.g., "91" for India, "1" for US)
+</ParamField>
+
+<ParamField body="profile_image" type="file">
+  User's profile image (optional)
+</ParamField>
+
+<ParamField body="device_token" type="string">
+  Device token for push notifications
+</ParamField>
+
+<ParamField body="platform" type="string" required>
+  Platform identifier: IOS, ANDROID, or WEB
+</ParamField>
+
+<ParamField body="company_name" type="string">
+  Required if reg_as_company is 0.
+</ParamField>
+
+<ParamField body="reg_as_company" type="integer" required>
+  0 for Company User, 1 for Independent User.
+</ParamField>
+
+<ParamField body="own_company_name" type="string">
+  New company name (required if reg_as_company = 1)
+</ParamField>
+
+## Response
+
+<ResponseField name="message" type="string">
+  Success message
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="User Data">
+    <ResponseField name="api_token" type="string">
+      Bearer token for authentication
+    </ResponseField>
+    <ResponseField name="user" type="object">
+      <Expandable title="User Object">
+        <ResponseField name="id" type="integer">
+          User ID
+        </ResponseField>
+        <ResponseField name="name" type="string">
+          User's full name
+        </ResponseField>
+        <ResponseField name="email" type="string">
+          User's email
+        </ResponseField>
+        <ResponseField name="phone_no" type="string">
+          User's phone number
+        </ResponseField>
+        <ResponseField name="profile_image" type="string">
+          URL to profile image
+        </ResponseField>
+        <ResponseField name="company_name" type="string">
+          Company ID
+        </ResponseField>
+        <ResponseField name="own_company_name" type="string">
+          Company name
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/user/signup' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: multipart/form-data' \
+--form 'name="John Doe"' \
+--form 'email="john.doe@example.com"' \
+--form 'phone_no="9173304645"' \
+--form 'password="SecurePass123"' \
+--form 'country_code="1"' \
+--form 'device_token="device_token_here"' \
+--form 'platform="WEB"' \
+--form 'reg_as_company="1"' \
+--form 'own_company_name="Doe Window Treatments"'
+```
+
+```javascript JavaScript
+const formData = new FormData();
+formData.append('name', 'John Doe');
+formData.append('email', 'john.doe@example.com');
+formData.append('phone_no', '9173304645');
+formData.append('password', 'SecurePass123');
+formData.append('country_code', '1');
+formData.append('device_token', 'device_token_here');
+formData.append('platform', 'WEB');
+formData.append('reg_as_company', '1');
+formData.append('own_company_name', 'Doe Window Treatments');
+
+const response = await fetch('http://fssportal.com/api/v1/user/signup', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN'
+  },
+  body: formData
+});
+
+const data = await response.json();
+```
+
+```python Python
+import requests
+
+files = {
+    'name': (None, 'John Doe'),
+    'email': (None, 'john.doe@example.com'),
+    'phone_no': (None, '9173304645'),
+    'password': (None, 'SecurePass123'),
+    'country_code': (None, '1'),
+    'device_token': (None, 'device_token_here'),
+    'platform': (None, 'WEB'),
+    'reg_as_company': (None, '1'),
+    'own_company_name': (None, 'Doe Window Treatments')
+}
+
+response = requests.post(
+    'http://fssportal.com/api/v1/user/signup',
+    headers={
+        'X-API-Token': 'YOUR_API_TOKEN'
+    },
+    files=files
+)
+
+data = response.json()
+```
+
+```php PHP
+<?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, [
+  CURLOPT_URL => 'http://fssportal.com/api/v1/user/signup',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_POST => true,
+  CURLOPT_HTTPHEADER => [
+    'X-API-Token: YOUR_API_TOKEN'
+  ],
+  CURLOPT_POSTFIELDS => [
+    'name' => 'John Doe',
+    'email' => 'john.doe@example.com',
+    'phone_no' => '9173304645',
+    'password' => 'SecurePass123',
+    'country_code' => '1',
+    'device_token' => 'device_token_here',
+    'platform' => 'WEB',
+    'reg_as_company' => '1',
+    'own_company_name' => 'Doe Window Treatments'
+  ]
+]);
+
+$response = curl_exec($curl);
+curl_close($curl);
+
+$data = json_decode($response, true);
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "User registered successfully",
+  "data": {
+    "api_token": "abc123def456ghi789jkl012mno345pqr678stu901vwx234yz",
+    "user": {
+      "id": 123,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "phone_no": "9173304645",
+      "country_code": "+1",
+      "profile_image": "https://fss-measurement-bucket.s3.amazonaws.com/profile_image/123.jpg",
+      "company_name": "176218755",
+      "own_company_name": "Doe Window Treatments",
+      "user_type": 2,
+      "status": 1,
+      "company_owner": 1,
+      "created_at": "2024-04-29T09:24:00.000000Z"
+    }
+  }
+}
+```
+
+```json Error Response - Validation
+{
+  "message": "The given data was invalid.",
+  "errors": {
+    "email": [
+      "The email has already been taken."
+    ],
+    "password": [
+      "The password must be at least 8 characters."
+    ]
+  },
+  "status": 422
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Email must be unique across all users
+- Password must be at least 8 characters
+- Profile image is optional but recommended
+- Device token is used for push notifications
+- Company registration:
+  - Set `reg_as_company=1` to create your own company
+  - Set `reg_as_company=0` to join an existing company (requires `company_name`)
+- After successful signup, use the returned `api_token` for authenticated requests

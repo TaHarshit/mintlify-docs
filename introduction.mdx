@@ -1,0 +1,155 @@
+---
+title: Introduction
+description: FSS Measurement API Documentation
+---
+
+# FSS Measurement API
+
+Welcome to the FSS Measurement API documentation. This API allows you to manage clients, rooms, measurements, and more.
+
+## Base URL
+
+The API base URL is configurable:
+
+- **Local Development**: `http://fssportal.com/api/v1`
+- **Production**: `https://fssportal.com/api/v1`
+
+## Authentication
+
+All API endpoints (except countries and how-it-works) require authentication using an API token.
+
+**Authentication Methods:**
+- `X-API-Token: YOUR_API_TOKEN` (Recommended)
+- `Authorization: Bearer YOUR_TOKEN`
+
+To get an API token, visit your dashboard at https://dashboard.fss-measurement.com.
+
+## Rate Limiting
+
+The API is rate-limited to **60 requests per minute** per API token.
+
+## Response Format
+
+All API responses follow this format:
+
+```json
+{
+  "status": "success",
+  "data": { ... },
+  "message": "Success message"
+}
+```
+
+## Using the Playground
+
+The API documentation includes an interactive playground for testing endpoints. To use it:
+
+1. Click the "Try it out" button on any API endpoint
+2. Enter your API token in the authentication field
+3. Fill in the required parameters
+4. Click "Send Request" to test the endpoint
+
+**Note**: The Mintlify playground only supports HTTPS URLs and is configured for production. For local testing with `http://localhost`, use the provided Postman collection instead.
+
+## Subscription Requirements
+
+API v1 requires an active subscription. Your token will only work if you have:
+- Active Stripe subscription, OR
+- Active trial period, OR
+- Active cash subscription
+
+If your subscription expires, your API token will stop working until you renew.
+
+## Rate Limiting
+
+API requests are rate limited to 60 requests per minute per token.
+
+## Response Format
+
+All API responses follow this format:
+
+**Success Response:**
+```json
+{
+  "status": "success",
+  "data": { ... }
+}
+```
+
+**Error Response:**
+```json
+{
+  "status": "error",
+  "message": "Error description"
+}
+```
+
+## API Endpoints
+
+The API is organized into the following categories:
+
+- [Authentication](./authentication) - User signup, login, password reset
+- [User Management](./api-reference/user) - Profile, settings, account management
+- [Client Management](./api-reference/client) - Client CRUD operations
+- [Room Management](./api-reference/room) - Room and measurement types
+- [Measurements](./api-reference/measurements) - Window and room measurements
+- [Lead Sources](./api-reference/lead-source) - Lead source management
+- [Plans & Subscriptions](./api-reference/plans) - Subscription plans
+- [Settings](./api-reference/countries) - Country data and settings
+
+## Error Codes
+
+| Status Code | Description |
+|-------------|-------------|
+| 200 | Success |
+| 401 | Unauthorized - Invalid or missing API token |
+| 403 | Forbidden - No active subscription |
+| 404 | Not Found - Resource doesn't exist |
+| 422 | Validation Error - Invalid request data |
+| 500 | Server Error - Internal server error |
+
+## Versioning
+
+This is API version 1 (v1). Future versions will be released as v2, v3, etc. The current version will remain stable and supported.
+
+## Key Features
+
+<AccordionGroup>
+  <Accordion icon="user" title="User Management">
+    Complete user authentication and profile management system with support for company accounts and team collaboration.
+  </Accordion>
+  <Accordion icon="users" title="Client Management">
+    Manage client information, projects, and contact details with advanced search capabilities.
+  </Accordion>
+  <Accordion icon="ruler" title="Measurement Tools">
+    Support for multiple window types including single windows, multiple windows, specialty windows, and awnings.
+  </Accordion>
+  <Accordion icon="credit-card" title="Subscription Management">
+    Integrated payment processing with Stripe for subscription-based access.
+  </Accordion>
+</AccordionGroup>
+
+## Base URL
+
+```
+https://api.fss-measurement.com/api
+```
+
+## API Versions
+
+The current API version is **v1**. All endpoints are versioned to ensure backward compatibility.
+
+## Rate Limiting
+
+API requests are limited to **60 requests per minute** per user. Rate limit information is included in response headers:
+
+- `X-RateLimit-Limit`: Maximum requests allowed
+- `X-RateLimit-Remaining`: Remaining requests in current window
+
+## Support
+
+Need help? Contact our support team:
+
+- **Email**: support@fss-measurement.com
+- **Documentation**: https://docs.fss-measurement.com
+- **Status Page**: https://status.fss-measurement.com

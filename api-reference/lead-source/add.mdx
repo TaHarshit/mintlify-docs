@@ -1,0 +1,194 @@
+---
+title: Create Lead Source
+api: 'POST /api/v1/lead_source/add'
+description: Create a new lead source
+---
+
+## Endpoint
+
+```
+POST /api/v1/lead_source/add
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="company_name" type="string">
+  company name
+</ParamField>
+
+<ParamField body="name" type="string" required>
+  name
+</ParamField>
+
+<ParamField body="surname" type="string" required>
+  surname
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Unique email for the lead source.
+</ParamField>
+
+<ParamField body="phone_no" type="string">
+  phone no
+</ParamField>
+
+<ParamField body="address" type="string">
+  address
+</ParamField>
+
+<ParamField body="city" type="string">
+  city
+</ParamField>
+
+<ParamField body="state" type="string">
+  state
+</ParamField>
+
+<ParamField body="zip_code" type="string">
+  zip code
+</ParamField>
+
+## Response
+
+<ResponseField name="message" type="string">
+  message
+</ResponseField>
+<ResponseField name="data" type="object">
+  data
+  <Expandable title="data">
+    <ResponseField name="user_id" type="integer">
+      user id
+    </ResponseField>
+    <ResponseField name="company_name" type="string">
+      company name
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      name
+    </ResponseField>
+    <ResponseField name="surname" type="string">
+      surname
+    </ResponseField>
+    <ResponseField name="email" type="string">
+      email
+    </ResponseField>
+    <ResponseField name="phone_no" type="string">
+      phone no
+    </ResponseField>
+    <ResponseField name="address" type="string">
+      address
+    </ResponseField>
+    <ResponseField name="city" type="string">
+      city
+    </ResponseField>
+    <ResponseField name="state" type="string">
+      state
+    </ResponseField>
+    <ResponseField name="zip_code" type="string">
+      zip code
+    </ResponseField>
+    <ResponseField name="billing_address" type="string">
+      billing address
+    </ResponseField>
+    <ResponseField name="billing_city" type="string">
+      billing city
+    </ResponseField>
+    <ResponseField name="billing_state" type="string">
+      billing state
+    </ResponseField>
+    <ResponseField name="billing_zip_code" type="string">
+      billing zip code
+    </ResponseField>
+    <ResponseField name="updated_at" type="string">
+      updated at
+    </ResponseField>
+    <ResponseField name="created_at" type="string">
+      created at
+    </ResponseField>
+    <ResponseField name="id" type="integer">
+      id
+    </ResponseField>  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/lead_source/add' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "company_name": "Test Company",
+  "name": "John",
+  "surname": "Doe",
+  "email": "john.doe@example.com",
+  "phone_no": "9876543210",
+  "address": "123 Main Street",
+  "city": "Rajkot",
+  "state": "Gujarat",
+  "zip_code": "360006"
+}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/lead_source/add', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+  "company_name": "Test Company",
+  "name": "John",
+  "surname": "Doe",
+  "email": "john.doe@example.com",
+  "phone_no": "9876543210",
+  "address": "123 Main Street",
+  "city": "Rajkot",
+  "state": "Gujarat",
+  "zip_code": "360006"
+})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Lead Source added successfully.",
+  "data": {
+    "user_id": 68,
+    "company_name": "Test Company",
+    "name": "John",
+    "surname": "Doe",
+    "email": "john.doe@example.com",
+    "phone_no": "9876543210",
+    "address": "123 Main Street",
+    "city": "Rajkot",
+    "state": "Gujarat",
+    "zip_code": "360006",
+    "billing_address": "123 Main Street",
+    "billing_city": "Rajkot",
+    "billing_state": "Gujarat",
+    "billing_zip_code": "360006",
+    "updated_at": "2026-05-14T11:34:45.000000Z",
+    "created_at": "2026-05-14T11:34:45.000000Z",
+    "id": 195
+  }
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required
+

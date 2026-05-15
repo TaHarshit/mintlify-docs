@@ -1,0 +1,344 @@
+---
+title: Get User Client
+api: 'POST /api/v1/client/user_client'
+description: Get clients shared by company members
+---
+
+## Endpoint
+
+```
+POST /api/v1/client/user_client
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="company_name" type="string" required>
+  Name of the company to fetch clients for.
+</ParamField>
+
+## Response
+
+<ResponseField name="message" type="string">
+  message
+</ResponseField>
+<ResponseField name="data" type="object">
+  data
+  <Expandable title="data">
+    <ResponseField name="current_page" type="integer">
+      current page
+    </ResponseField>
+    <ResponseField name="data" type="array">
+      data
+      <Expandable title="data item">
+        <ResponseField name="id" type="integer">
+          id
+        </ResponseField>
+        <ResponseField name="user_id" type="integer">
+          user id
+        </ResponseField>
+        <ResponseField name="lead_source_id" type="object">
+          lead source id
+        </ResponseField>
+        <ResponseField name="end_client_known" type="integer">
+          end client known
+        </ResponseField>
+        <ResponseField name="quote_no" type="string">
+          quote no
+        </ResponseField>
+        <ResponseField name="project_name" type="object">
+          project name
+        </ResponseField>
+        <ResponseField name="name" type="string">
+          name
+        </ResponseField>
+        <ResponseField name="surname" type="string">
+          surname
+        </ResponseField>
+        <ResponseField name="email" type="string">
+          email
+        </ResponseField>
+        <ResponseField name="phone_no" type="string">
+          phone no
+        </ResponseField>
+        <ResponseField name="location" type="string">
+          location
+        </ResponseField>
+        <ResponseField name="address" type="string">
+          address
+        </ResponseField>
+        <ResponseField name="state" type="string">
+          state
+        </ResponseField>
+        <ResponseField name="city" type="string">
+          city
+        </ResponseField>
+        <ResponseField name="zip_code" type="string">
+          zip code
+        </ResponseField>
+        <ResponseField name="billing_address" type="string">
+          billing address
+        </ResponseField>
+        <ResponseField name="billing_city" type="string">
+          billing city
+        </ResponseField>
+        <ResponseField name="billing_state" type="string">
+          billing state
+        </ResponseField>
+        <ResponseField name="billing_zip_code" type="string">
+          billing zip code
+        </ResponseField>
+        <ResponseField name="created_at" type="string">
+          created at
+        </ResponseField>
+        <ResponseField name="lead_source_name" type="object">
+          lead source name
+        </ResponseField>
+        <ResponseField name="lead_source_email" type="object">
+          lead source email
+        </ResponseField>      </Expandable>
+    </ResponseField>
+    <ResponseField name="first_page_url" type="string">
+      first page url
+    </ResponseField>
+    <ResponseField name="from" type="integer">
+      from
+    </ResponseField>
+    <ResponseField name="last_page" type="integer">
+      last page
+    </ResponseField>
+    <ResponseField name="last_page_url" type="string">
+      last page url
+    </ResponseField>
+    <ResponseField name="links" type="array">
+      links
+      <Expandable title="links item">
+        <ResponseField name="url" type="object">
+          url
+        </ResponseField>
+        <ResponseField name="label" type="string">
+          label
+        </ResponseField>
+        <ResponseField name="active" type="boolean">
+          active
+        </ResponseField>      </Expandable>
+    </ResponseField>
+    <ResponseField name="next_page_url" type="object">
+      next page url
+    </ResponseField>
+    <ResponseField name="path" type="string">
+      path
+    </ResponseField>
+    <ResponseField name="per_page" type="integer">
+      per page
+    </ResponseField>
+    <ResponseField name="prev_page_url" type="object">
+      prev page url
+    </ResponseField>
+    <ResponseField name="to" type="integer">
+      to
+    </ResponseField>
+    <ResponseField name="total" type="integer">
+      total
+    </ResponseField>  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/client/user_client' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "company_name": "630311275"
+}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/client/user_client', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+  "company_name": "630311275"
+})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Clients get successfully.",
+  "data": {
+    "current_page": 1,
+    "data": [
+      {
+        "id": 1653,
+        "user_id": 73,
+        "lead_source_id": null,
+        "end_client_known": 1,
+        "quote_no": "Ha",
+        "project_name": null,
+        "name": "Solatech Testing",
+        "surname": "Wow",
+        "email": "testss@gmail.com",
+        "phone_no": "84600 08773",
+        "location": "Rajkot",
+        "address": "403 Apple Avenue, 40 Ft Road, Om Nagar Circle Rajkot, Rajkot 360005",
+        "state": "Arizona",
+        "city": "Rajkot",
+        "zip_code": "360005",
+        "billing_address": "403 Apple Avenue, 40 Ft Road, Om Nagar Circle Rajkot, Rajkot 360005",
+        "billing_city": "Rajkot",
+        "billing_state": "Arizona",
+        "billing_zip_code": "360005",
+        "created_at": "2026-03-01T08:00:39.000000Z",
+        "lead_source_name": null,
+        "lead_source_email": null
+      },
+      {
+        "id": 1585,
+        "user_id": 73,
+        "lead_source_id": null,
+        "end_client_known": 1,
+        "quote_no": "",
+        "project_name": null,
+        "name": "Avni",
+        "surname": "Thakarar",
+        "email": "avni@test.com",
+        "phone_no": "",
+        "location": "Rajkot",
+        "address": "",
+        "state": "",
+        "city": "",
+        "zip_code": "",
+        "billing_address": "",
+        "billing_city": "",
+        "billing_state": "",
+        "billing_zip_code": "",
+        "created_at": "2026-01-28T12:24:21.000000Z",
+        "lead_source_name": null,
+        "lead_source_email": null
+      },
+      {
+        "id": 1469,
+        "user_id": 73,
+        "lead_source_id": null,
+        "end_client_known": 0,
+        "quote_no": "",
+        "project_name": "Test",
+        "name": "QuickQuote",
+        "surname": "QuickQuote",
+        "email": "fss@gmail.com",
+        "phone_no": "",
+        "location": "QuickQuoteLocation",
+        "address": "",
+        "state": "",
+        "city": "",
+        "zip_code": "",
+        "billing_address": "",
+        "billing_city": "",
+        "billing_state": "",
+        "billing_zip_code": "",
+        "created_at": "2025-12-12T11:57:35.000000Z",
+        "lead_source_name": null,
+        "lead_source_email": null
+      },
+      {
+        "id": 1235,
+        "user_id": 73,
+        "lead_source_id": 63,
+        "end_client_known": 0,
+        "quote_no": "",
+        "project_name": "Priyanka Project",
+        "name": "Unknown",
+        "surname": "Nagvadia",
+        "email": "pooja_20250513163813@gmail.com",
+        "phone_no": "",
+        "location": null,
+        "address": "Aaa",
+        "state": "CA",
+        "city": "Rerere",
+        "zip_code": "",
+        "billing_address": "Aa",
+        "billing_city": "Erere",
+        "billing_state": "CO",
+        "billing_zip_code": "65656",
+        "created_at": "2025-05-13T11:08:29.000000Z",
+        "lead_source_name": "Pooja Nagvadia",
+        "lead_source_email": "pooja@gmail.com"
+      },
+      {
+        "id": 1210,
+        "user_id": 73,
+        "lead_source_id": 35,
+        "end_client_known": 1,
+        "quote_no": "Wiwa",
+        "project_name": null,
+        "name": "Test",
+        "surname": "Fss",
+        "email": "test@gmail.com",
+        "phone_no": "12345678",
+        "location": "Rajkot",
+        "address": "Er",
+        "state": "Alabama",
+        "city": "Rajkot",
+        "zip_code": "360004",
+        "billing_address": "Er",
+        "billing_city": "Rajkot",
+        "billing_state": "Alabama",
+        "billing_zip_code": "360004",
+        "created_at": "2025-04-13T04:52:12.000000Z",
+        "lead_source_name": "Hetal Prajapati",
+        "lead_source_email": "lol566@gmail.com"
+      }
+    ],
+    "first_page_url": "http://localhost/fss/public/api/v1/client/user_client?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "http://localhost/fss/public/api/v1/client/user_client?page=1",
+    "links": [
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "active": false
+      },
+      {
+        "url": "http://localhost/fss/public/api/v1/client/user_client?page=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": null,
+        "label": "Next &raquo;",
+        "active": false
+      }
+    ],
+    "next_page_url": null,
+    "path": "http://localhost/fss/public/api/v1/client/user_client",
+    "per_page": 20,
+    "prev_page_url": null,
+    "to": 5,
+    "total": 5
+  }
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required
+

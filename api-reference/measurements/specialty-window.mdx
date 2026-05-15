@@ -1,0 +1,345 @@
+---
+title: Specialty Window Measurement
+api: 'POST /api/v1/measurements/specialty_window_add_edit'
+description: Add/edit specialty window measurements
+---
+
+## Endpoint
+
+```
+POST /api/v1/measurements/specialty_window_add_edit
+```
+
+<Note>This endpoint requires authentication</Note>
+
+## Headers
+
+Authentication is handled via the `X-API-Token` header. You can set this globally in the API playground.
+
+## Request Body
+
+<ParamField body="id" type="integer">
+  id
+</ParamField>
+
+<ParamField body="user_id" type="integer" required>
+  user id
+</ParamField>
+
+<ParamField body="client_id" type="integer" required>
+  client id
+</ParamField>
+
+<ParamField body="room_id" type="integer" required>
+  room id
+</ParamField>
+
+<ParamField body="measurement_type_id" type="integer" required>
+  measurement type id
+</ParamField>
+
+<ParamField body="unit_type" type="string" required>
+  unit type
+</ParamField>
+
+<ParamField body="mount_type" type="string">
+  mount type
+</ParamField>
+
+<ParamField body="window_type" type="integer" required>
+  Type of specialty window (e.g., Arch, Trapezoid).
+</ParamField>
+
+<ParamField body="window_name" type="string" required>
+  window name
+</ParamField>
+
+<ParamField body="a" type="string">
+  a
+</ParamField>
+
+<ParamField body="b" type="string">
+  b
+</ParamField>
+
+<ParamField body="c" type="string">
+  c
+</ParamField>
+
+<ParamField body="d" type="string">
+  d
+</ParamField>
+
+<ParamField body="e" type="string">
+  e
+</ParamField>
+
+<ParamField body="f" type="string">
+  f
+</ParamField>
+
+<ParamField body="g" type="string">
+  g
+</ParamField>
+
+<ParamField body="h" type="string">
+  h
+</ParamField>
+
+<ParamField body="i" type="string">
+  i
+</ParamField>
+
+<ParamField body="j" type="string">
+  j
+</ParamField>
+
+<ParamField body="k" type="string">
+  k
+</ParamField>
+
+<ParamField body="l" type="string">
+  l
+</ParamField>
+
+<ParamField body="w" type="string">
+  w
+</ParamField>
+
+<ParamField body="r" type="string">
+  r
+</ParamField>
+
+<ParamField body="w1" type="string">
+  w1
+</ParamField>
+
+<ParamField body="h1" type="string">
+  h1
+</ParamField>
+
+<ParamField body="d1" type="string">
+  d1
+</ParamField>
+
+<ParamField body="x1" type="string">
+  x1
+</ParamField>
+
+<ParamField body="b1" type="string">
+  b1
+</ParamField>
+
+<ParamField body="w2" type="string">
+  w2
+</ParamField>
+
+<ParamField body="h2" type="string">
+  h2
+</ParamField>
+
+<ParamField body="d2" type="string">
+  d2
+</ParamField>
+
+<ParamField body="x2" type="string">
+  x2
+</ParamField>
+
+<ParamField body="b2" type="string">
+  b2
+</ParamField>
+
+<ParamField body="focus_width" type="string">
+  focus width
+</ParamField>
+
+<ParamField body="focus_width_key" type="string">
+  focus width key
+</ParamField>
+
+<ParamField body="focus_height" type="string">
+  focus height
+</ParamField>
+
+<ParamField body="focus_height_key" type="string">
+  focus height key
+</ParamField>
+
+<ParamField body="for_shutter" type="string">
+  for shutter
+</ParamField>
+
+<ParamField body="square_feet" type="string">
+  square feet
+</ParamField>
+
+<ParamField body="min_value_fields" type="string">
+  min value fields
+</ParamField>
+
+<ParamField body="note" type="string">
+  note
+</ParamField>
+
+<ParamField body="offset_value" type="string">
+  offset value
+</ParamField>
+
+<ParamField body="offset_value_keys" type="string">
+  offset value keys
+</ParamField>
+
+<ParamField body="installation_instructions" type="string">
+  installation instructions
+</ParamField>
+
+<ParamField body="total_custom_fields" type="integer">
+  total custom fields
+</ParamField>
+
+<ParamField body="custom_field" type="object">
+  custom field
+</ParamField>
+
+## Response
+
+<ResponseField name="message" type="string">
+  message
+</ResponseField>
+<ResponseField name="data" type="array">
+  data
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl --location 'http://fssportal.com/api/v1/measurements/specialty_window_add_edit' \
+--header 'X-API-Token: YOUR_API_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "id": 0,
+  "user_id": 68,
+  "client_id": 1856,
+  "room_id": 4945,
+  "measurement_type_id": 1,
+  "unit_type": "metrix",
+  "mount_type": "",
+  "window_type": 3,
+  "window_name": "test",
+  "a": "",
+  "b": "",
+  "c": "",
+  "d": "",
+  "e": "",
+  "f": "",
+  "g": "",
+  "h": "",
+  "i": "",
+  "j": "",
+  "k": "",
+  "l": "",
+  "w": "",
+  "r": "",
+  "w1": "",
+  "h1": "",
+  "d1": "",
+  "x1": "",
+  "b1": "",
+  "w2": "",
+  "h2": "",
+  "d2": "",
+  "x2": "",
+  "b2": "",
+  "focus_width": "",
+  "focus_width_key": "",
+  "focus_height": "",
+  "focus_height_key": "",
+  "for_shutter": "",
+  "square_feet": "",
+  "min_value_fields": "",
+  "note": "",
+  "offset_value": "",
+  "offset_value_keys": "",
+  "installation_instructions": "",
+  "total_custom_fields": 0,
+  "custom_field": []
+}'
+```
+
+```javascript JavaScript
+const response = await fetch('http://fssportal.com/api/v1/measurements/specialty_window_add_edit', {
+  method: 'POST',
+  headers: {
+    'X-API-Token': 'YOUR_API_TOKEN',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+  "id": 0,
+  "user_id": 68,
+  "client_id": 1856,
+  "room_id": 4945,
+  "measurement_type_id": 1,
+  "unit_type": "metrix",
+  "mount_type": "",
+  "window_type": 3,
+  "window_name": "test",
+  "a": "",
+  "b": "",
+  "c": "",
+  "d": "",
+  "e": "",
+  "f": "",
+  "g": "",
+  "h": "",
+  "i": "",
+  "j": "",
+  "k": "",
+  "l": "",
+  "w": "",
+  "r": "",
+  "w1": "",
+  "h1": "",
+  "d1": "",
+  "x1": "",
+  "b1": "",
+  "w2": "",
+  "h2": "",
+  "d2": "",
+  "x2": "",
+  "b2": "",
+  "focus_width": "",
+  "focus_width_key": "",
+  "focus_height": "",
+  "focus_height_key": "",
+  "for_shutter": "",
+  "square_feet": "",
+  "min_value_fields": "",
+  "note": "",
+  "offset_value": "",
+  "offset_value_keys": "",
+  "installation_instructions": "",
+  "total_custom_fields": 0,
+  "custom_field": []
+})
+});
+
+const data = await response.json();
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Measurement added successfully!",
+  "data": []
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- Authentication is required
