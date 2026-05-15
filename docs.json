@@ -1,0 +1,98 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "FSS API v1 Documentation",
+  "colors": {
+    "primary": "#0A8F5A",
+    "light": "#65C18C",
+    "dark": "#074A30"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "introduction"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "User Management",
+            "pages": [
+              "api-reference/user/get-profile",
+              "api-reference/user/get-company-user"
+            ]
+          },
+          {
+            "group": "Client Management",
+            "pages": [
+              "api-reference/client/add",
+              "api-reference/client/update",
+              "api-reference/client/delete",
+              "api-reference/client/search",
+              "api-reference/client/list",
+              "api-reference/client/user-client"
+            ]
+          },
+          {
+            "group": "Room Management",
+            "pages": [
+              "api-reference/room/measurement-type",
+              "api-reference/room/add",
+              "api-reference/room/update",
+              "api-reference/room/delete",
+              "api-reference/room/get-category",
+              "api-reference/room/get",
+              "api-reference/room/get-by-client-id",
+              "api-reference/adminroom/index"
+            ]
+          },
+          {
+            "group": "Measurements",
+            "pages": [
+              "api-reference/measurements/single-window-photo",
+              "api-reference/measurements/specialty-window",
+              "api-reference/measurements/series-window-draperies",
+              "api-reference/measurements/awning",
+              "api-reference/measurements/get",
+              "api-reference/measurements/delete"
+            ]
+          },
+          {
+            "group": "Lead Sources",
+            "pages": [
+              "api-reference/lead-source/get",
+              "api-reference/lead-source/add",
+              "api-reference/lead-source/update",
+              "api-reference/lead-source/user-leadsource"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Dashboard",
+        "href": "https://fssportal.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Get API Token",
+      "href": "https://fssportal.com/admin/api-tokens"
+    }
+  }
+}
